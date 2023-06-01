@@ -1,0 +1,50 @@
+@import '../../index.scss';
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    width: 100px;
+    height: 60px;
+    cursor: pointer;
+    img {
+      width: 100%;
+    }
+    p {
+      font-size: 1.5rem;
+      letter-spacing: 5px;
+      color: var(--text-color2);
+    }
+  }
+  &__links {
+    display: flex;
+
+    gap: 2rem;
+    a {
+      text-decoration: none;
+      color: var(--text-color2);
+    }
+  }
+  &__mobilelinks {
+    color: var(--text-color2);
+    svg {
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .headerMiddle {
+    padding: 1.5em 4em;
+  }
+  .headerMiddle__logo h2 {
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,73 @@
+.mobileMenu {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 4;
+  svg {
+    position: fixed;
+    font-size: 1.5rem;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+    z-index: 5;
+    color: var(--text-color2);
+    cursor: pointer;
+  }
+  &__main {
+    position: fixed;
+    right: 0;
+    height: 100%;
+    background: var(--bg-color);
+    width: 14em;
+    padding-bottom: 5rem;
+    z-index: 4;
+    &__links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      padding: 1rem;
+      a {
+        text-decoration: none;
+        color: var(--text-color2);
+      }
+    }
+  }
+  &__backdrop {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 3;
+  }
+}
+
+/* Animation  */
+.show_menu {
+  animation: show_Menu 0.3s forwards;
+}
+@keyframes show_Menu {
+  from {
+    transform: translateX(40em);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+.hide_menu {
+  animation: hide_Menu 0.3s forwards;
+}
+@keyframes hide_Menu {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(40em);
+  }
+}
