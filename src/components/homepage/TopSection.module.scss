@@ -5,41 +5,29 @@
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
-  min-height: 80vh;
-  padding-left: 6rem;
+  min-height: 60vh;
   h1 {
-    font-weight: bold;
-    font-size: 4rem;
+    position: absolute;
+    z-index: 10;
     width: 50%;
+    top: 200px;
+    padding-left: 3rem;
+    font-weight: bold;
+    font-size: 3.5rem;
   }
 }
 
 .car3d {
-  position: absolute;
   right: 0;
 }
 .video {
-  width: 70vh;
+  position: relative;
+  top: -300px;
+  width: 100%;
+  z-index: 0;
 }
 
 @media screen and (max-width: 1100px) {
-  .topSection {
-    h1 {
-      font-size: 3rem;
-    }
-  }
-
-  .video {
-    width: 60vh;
-  }
 }
 @media screen and (max-width: 1000px) {
-  .topSection {
-    h1 {
-      font-size: 2rem;
-    }
-    .video {
-      width: 50vh;
-    }
-  }
 }
