@@ -5,22 +5,67 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  min-height: 60vh;
-  h1 {
-    position: absolute;
-    z-index: 10;
-    width: 50%;
-    top: 200px;
-    padding-left: 6rem;
-    font-weight: bold;
-    font-size: 3.5rem;
-  }
+  min-height: 90vh;
+}
+h1 {
+  position: absolute;
+  z-index: 10;
+  width: 50%;
+  top: 100px;
+  font-weight: bold;
+  font-size: 1rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
 }
 
 .video {
   position: absolute;
-  top: -200px;
+  top: 50px;
   right: 0;
   width: 100%;
   z-index: 0;
+}
+
+@media screen and (min-width: 337px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (min-width: 600px) {
+  h1 {
+    padding-top: 4rem;
+    font-size: 2rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  h1 {
+    padding-top: 4rem;
+    font-size: 3rem;
+    padding-left: 3rem;
+  }
+}
+@media screen and (min-width: 1150px) {
+  .video {
+    top: -100px;
+  }
+  h1 {
+    font-size: 4rem;
+    padding-left: 6rem;
+  }
+}
+@media screen and (min-width: 1250px) {
+  .video {
+    top: -150px;
+  }
+  h1 {
+    font-size: 3.5rem;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .video {
+    top: -200px;
+  }
+  h1 {
+    font-size: 4rem;
+  }
 }
