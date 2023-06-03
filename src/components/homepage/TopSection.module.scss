@@ -1,0 +1,45 @@
+@import '../../index.scss';
+
+.topSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  min-height: 80vh;
+  padding-left: 6rem;
+  h1 {
+    font-weight: bold;
+    font-size: 4rem;
+    width: 50%;
+  }
+}
+
+.car3d {
+  position: absolute;
+  right: 0;
+}
+.video {
+  width: 70vh;
+}
+
+@media screen and (max-width: 1100px) {
+  .topSection {
+    h1 {
+      font-size: 3rem;
+    }
+  }
+
+  .video {
+    width: 60vh;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .topSection {
+    h1 {
+      font-size: 2rem;
+    }
+    .video {
+      width: 50vh;
+    }
+  }
+}
