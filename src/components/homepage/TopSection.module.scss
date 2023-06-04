@@ -20,7 +20,7 @@ h1 {
 
 .video {
   position: absolute;
-  top: 50px;
+  top: 80px;
   right: 0;
   width: 100%;
   z-index: 0;
@@ -58,7 +58,7 @@ h1 {
 }
 @media screen and (min-width: 1150px) {
   .video {
-    top: -100px;
+    top: -50px;
   }
   h1 {
     font-size: 4rem;
@@ -67,7 +67,7 @@ h1 {
 }
 @media screen and (min-width: 1250px) {
   .video {
-    top: -150px;
+    top: -80px;
   }
   h1 {
     font-size: 3.5rem;
@@ -75,7 +75,7 @@ h1 {
 }
 @media screen and (min-width: 1400px) {
   .video {
-    top: -200px;
+    top: -100px;
   }
   h1 {
     font-size: 4rem;
