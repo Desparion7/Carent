@@ -10,7 +10,13 @@ h1 {
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: var(--main-background-color);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 249, 214, 1) 0%,
+    rgba(112, 115, 111, 1) 21%,
+    rgba(70, 72, 69, 1) 38%,
+    rgba(0, 0, 0, 1) 69%
+  );
   &__text {
     position: absolute;
     top: 0;
@@ -19,13 +25,29 @@ h1 {
     display: flex;
     flex-direction: column;
     z-index: 8;
+  }
+  &__carinfo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1rem;
+    gap: 0.5rem;
+    padding: 1rem;
+    z-index: 8;
+    &__title {
+      font-size: 1.1rem;
+      color: var(--main-background-color);
+    }
+    &__text {
+      color: white;
+    }
     &__btns {
       display: flex;
-      align-items: center;
-      padding-left: 1rem;
-      gap: 2rem;
-      position: absolute;
-      bottom: 1rem;
+      gap: 1rem;
     }
   }
 }
@@ -56,29 +78,26 @@ h1 {
   h1 {
     font-size: 2rem;
   }
+  .topSection {
+    &__carinfo {
+      font-size: 1.2rem;
+      gap: 1rem;
+      padding: 2rem;
+      &__title {
+        font-size: 1.5rem;
+      }
+    }
+  }
 }
 @media screen and (min-width: 768px) {
   h1 {
     font-size: 2.5rem;
-  }
-  .topSection {
-    &__text {
-      &__btns {
-        padding-right: 3rem;
-        justify-content: flex-end;
-      }
-    }
   }
 }
 @media screen and (min-width: 1000px) {
   .topSection {
     &__text {
       padding-left: 2rem;
-      &__btns {
-        position: relative;
-        bottom: 0;
-        justify-content: flex-start;
-      }
     }
   }
 }

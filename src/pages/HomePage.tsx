@@ -1,15 +1,15 @@
-import BookSection from '../components/homepage/BookSection';
 import TopSection from '../components/homepage/TopSection';
 import StepsSection from '../components/homepage/StepsSection';
 import AboutUsSection from '../components/homepage/AboutUsSection';
+import SlideOffert from '../components/homepage/SlideOffert';
 
 const HomePage = () => {
   return (
     <div>
       <TopSection />
-      <BookSection />
       <StepsSection />
       <AboutUsSection />
+      <SlideOffert />
     </div>
   );
 };

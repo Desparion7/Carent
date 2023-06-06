@@ -34,7 +34,7 @@ const Header = () => {
         <nav className={styles.header__links}>
           <Link to="/">Home</Link>
           <Link to="/cars">Cars</Link>
-          <Link to="/services">Services</Link>
+          <Link to="/aboutus">About Us</Link>
           <Link to="/contact">Contact Us</Link>
         </nav>
       )}

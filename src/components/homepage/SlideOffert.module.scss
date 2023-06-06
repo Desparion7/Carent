@@ -1,0 +1,50 @@
+.slideOffert {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  gap: 2rem;
+}
+.carCard {
+  width: 16.5rem;
+  padding: 1rem;
+  border: 1px solid rgb(192, 192, 192);
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  -webkit-box-shadow: 8px 14px 24px 0px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 8px 14px 24px 0px rgba(66, 68, 90, 1);
+  box-shadow: 8px 14px 24px 0px rgba(66, 68, 90, 1);
+  img {
+    width: 100%;
+    height: 130px;
+  }
+  &__name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+  }
+  &__price {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+  &__year {
+    margin-bottom: 0.5rem;
+  }
+  &__line {
+    margin: 0.5rem 0;
+    border-top: 1px solid grey;
+  }
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    color: var(--text-color3);
+    &__box {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+}

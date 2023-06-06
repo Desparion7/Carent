@@ -9,14 +9,14 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
-  --main-background-color: rgb(239 68 68);
+  --main-background-color: rgb(210, 152, 17);
   --text-color1: black;
   --text-color2: white;
   --text-color3: rgb(87, 87, 87);
   --bg-color: black;
 }
 body {
-  // background-image: url('../public/background.PNG');
+  background-image: url('../public/background.PNG');
   background-size: contain;
 }
 .wrapper {
@@ -33,5 +33,10 @@ body {
 @media screen and (min-width: 1000px) {
   .wrapper {
     padding: 2rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .wrapper {
+    padding: 2rem 6rem;
   }
 }

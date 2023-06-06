@@ -2,12 +2,13 @@
   text-align: center;
   margin: 2rem;
   h2 {
-    font-size: 3rem;
-    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
   }
   &__container {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     color: var(--text-color3);
     gap: 1rem;
     svg {
@@ -21,6 +22,17 @@
       color: var(--text-color1);
       font-size: 1.2rem;
       font-weight: bold;
+    }
+  }
+}
+@media screen and (min-width: 600px) {
+  .stepsSection {
+    h2 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+    &__container {
+      flex-direction: row;
     }
   }
 }

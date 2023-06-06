@@ -1,6 +1,7 @@
 .button {
   border: none;
   font-size: 0.8rem;
+  font-weight: bold;
   padding: 0.5rem;
   border-radius: 8px;
   color: white;
@@ -17,7 +18,10 @@
 
 @media screen and (min-width: 414px) {
   .button {
-    font-size: 0.9rem;
-    padding: 0.8rem;
+    font-size: 1rem;
+    padding: 0.8rem 1.6rem;
   }
+}
+.width {
+  width: 100%;
 }
