@@ -1,0 +1,25 @@
+.stepsSection {
+  text-align: center;
+  margin: 2rem;
+  h2 {
+    font-size: 3rem;
+  }
+  &__container {
+    display: flex;
+    justify-content: center;
+    color: var(--text-color3);
+    gap: 1rem;
+    svg {
+      font-size: 4.5rem;
+      padding: 0.5rem 1rem;
+      color: var(--main-background-color);
+      border: 1px solid rgb(225, 225, 225);
+      border-radius: 5px;
+    }
+    &__step {
+      color: var(--text-color1);
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+}

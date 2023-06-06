@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import { BiCalendar } from 'react-icons/bi';
+import dateFormat from 'dateformat';
 import styles from './BookSection.module.scss';
 import Button from '../ui/Button';
 import 'react-calendar/dist/Calendar.css';
@@ -15,59 +16,87 @@ const BookSection = () => {
     ValuePiece | [ValuePiece, ValuePiece]
   >(new Date());
 
-  const [isStartCalendarOpen, setStartCalendarOpen] = useState(false);
+  const [isstartCalendarOpen, setStartCalendarOpen] = useState(false);
   const [isReturnCalendarOpen, setReturnCalendarOpen] = useState(false);
 
-  const toggleStartDateCalendar = () => {
-    setStartCalendarOpen(!isStartCalendarOpen);
-    // if (isReturnCalendarOpen) setReturnCalendarOpen(false);
-  };
+  const [startDateString, setStartDateString] = useState('');
+  const [returntDateString, setReturntDateString] = useState('');
 
+  useEffect(() => {
+    if (startDate instanceof Date) {
+      const formattedDate = dateFormat(startDate, 'fullDate');
+      setStartDateString(formattedDate);
+    }
+  }, [startDate]);
+
+  useEffect(() => {
+    if (returnDate instanceof Date) {
+      const formattedDate = dateFormat(returnDate, 'fullDate');
+      setReturntDateString(formattedDate);
+    }
+  }, [returnDate]);
+
+  const toggleStartDateCalendar = () => {
+    setStartCalendarOpen(!isstartCalendarOpen);
+  };
   const toggleReturnDateCalendar = () => {
     setReturnCalendarOpen(!isReturnCalendarOpen);
-    // if (isstartCalendarOpen) setStartCalendarOpen(false);
   };
+
   return (
     <div className={`${styles.bookSection} ${styles.wrapper}`}>
       <div className={styles.bookSection__container}>
-        <div className={styles.bookSection__container__date}>
-          <BiCalendar />
+        <div>
           <div
+            className={styles.bookSection__container__date}
             onClick={toggleStartDateCalendar}
             onKeyDown={(event) => {
               if (event.key === 'Enter') {
                 toggleStartDateCalendar();
               }
             }}
-            tabIndex={0}
             role="button"
+            tabIndex={0}
           >
-            Pick Up Date
+            <BiCalendar />
+            <p>Pick Up Date:</p>
+            <p>{startDateString}</p>
           </div>
-          {isStartCalendarOpen && (
-            <Calendar value={startDate} onChange={setStartDate} />
+          {isstartCalendarOpen && (
+            <Calendar
+              className={styles.bookSection__container__calendar}
+              value={startDate}
+              onChange={setStartDate}
+            />
           )}
         </div>
-        <div className={styles.bookSection__container__date}>
-          <BiCalendar />
+        <div>
           <div
+            className={styles.bookSection__container__date}
             onClick={toggleReturnDateCalendar}
             onKeyDown={(event) => {
               if (event.key === 'Enter') {
-                toggleStartDateCalendar();
+                toggleReturnDateCalendar();
               }
             }}
-            tabIndex={0}
             role="button"
+            tabIndex={0}
           >
-            Return Date
+            <BiCalendar />
+            <p>Return Date:</p>
+            <p>{returntDateString}</p>
           </div>
           {isReturnCalendarOpen && (
-            <Calendar value={returnDate} onChange={setReturnDate} />
+            <Calendar
+              className={styles.bookSection__container__calendar}
+              value={returnDate}
+              onChange={setReturnDate}
+              minDate={startDate as Date}
+            />
           )}
         </div>
-        <Button text="Book Ride" />
       </div>
+      <Button text="Book Your Ride" />
     </div>
   );
 };
