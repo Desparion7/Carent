@@ -1,6 +1,7 @@
 import BookSection from '../components/homepage/BookSection';
 import TopSection from '../components/homepage/TopSection';
 import StepsSection from '../components/homepage/StepsSection';
+import AboutUsSection from '../components/homepage/AboutUsSection';
 
 const HomePage = () => {
   return (
@@ -8,6 +9,7 @@ const HomePage = () => {
       <TopSection />
       <BookSection />
       <StepsSection />
+      <AboutUsSection />
     </div>
   );
 };

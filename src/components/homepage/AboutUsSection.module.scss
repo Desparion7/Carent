@@ -1,0 +1,9 @@
+@import '../../index.scss';
+
+.aboutUs {
+  display: flex;
+  align-items: center;
+  &__text {
+    margin: 2rem;
+  }
+}

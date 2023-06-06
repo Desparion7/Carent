@@ -5,14 +5,14 @@ import styles from './StepsSection.module.scss';
 const StepsSection = () => {
   return (
     <div className={styles.stepsSection}>
-      <h2>Our Working Steps</h2>
+      <h2>The Booking Process</h2>
       <div className={styles.stepsSection__container}>
         <div>
           <FaMapMarkedAlt />
           <p className={styles.stepsSection__container__step}>
             Choose Location
           </p>
-          <p>Find the nearest YourCar point and book your car.</p>
+          <p>Find the nearest CARENT point and book your car.</p>
         </div>
         <div>
           <BiCalendar />
