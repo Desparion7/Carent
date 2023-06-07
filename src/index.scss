@@ -40,3 +40,8 @@ body {
     padding: 2rem 6rem;
   }
 }
+// position for home page slide
+.slick-initialized .slick-slide {
+  display: flex;
+  justify-content: center;
+}

@@ -1,50 +1,57 @@
 .slideOffert {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  gap: 2rem;
+  margin-bottom: 4rem;
 }
-.carCard {
-  width: 16.5rem;
-  padding: 1rem;
-  border: 1px solid rgb(192, 192, 192);
-  border-radius: 5px;
-  margin-bottom: 2rem;
-  -webkit-box-shadow: 8px 14px 24px 0px rgba(66, 68, 90, 1);
-  -moz-box-shadow: 8px 14px 24px 0px rgba(66, 68, 90, 1);
-  box-shadow: 8px 14px 24px 0px rgba(66, 68, 90, 1);
-  img {
-    width: 100%;
-    height: 130px;
+.arrow {
+  position: absolute;
+  display: none;
+  top: 50%;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  font-size: 0;
+  line-height: 0;
+  transform: translate(0, -50%);
+  cursor: pointer;
+  &__right {
+    right: 0px;
   }
-  &__name {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin: 0.5rem 0;
+  &__left {
+    left: 0px;
   }
-  &__price {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
+}
+.arrow__right:before {
+  font-family: 'slick';
+  font-size: 40px;
+  line-height: 1;
+  color: var(--main-background-color);
+  content: '→';
+}
+.arrow__left:before {
+  font-family: 'slick';
+  font-size: 40px;
+  line-height: 1;
+  color: var(--main-background-color);
+  content: '←';
+}
+
+@media screen and (min-width: 414px) {
+  .slideOffert {
+    padding: 0 2rem;
   }
-  &__year {
-    margin-bottom: 0.5rem;
+  .arrow {
+    display: block;
   }
-  &__line {
-    margin: 0.5rem 0;
-    border-top: 1px solid grey;
+}
+@media screen and (min-width: 768px) {
+  .slideOffert {
+    padding: 0 10rem;
   }
-  &__info {
-    display: flex;
-    justify-content: space-between;
-    margin: 1rem 0;
-    font-size: 0.9rem;
-    color: var(--text-color3);
-    &__box {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+  .arrow {
+    &__right {
+      right: -25px;
+    }
+    &__left {
+      left: -50px;
     }
   }
 }

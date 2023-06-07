@@ -1,86 +1,117 @@
-import { RiPinDistanceLine } from 'react-icons/ri';
-import { BsFillGearFill } from 'react-icons/bs';
-import { MdWaterDrop } from 'react-icons/md';
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import Slider from 'react-slick';
 import styles from './SlideOffert.module.scss';
-import Button from '../ui/Button';
+import CarCard from './CarCard';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-interface CarCardType {
-  img: string;
-  name: string;
-  dailyPrice: string;
-  mileage: string;
-  gas: string;
-  gearType: string;
-  year: string;
+interface ArrowPropsType {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onClick: any;
 }
 
-export const CarCard = ({
-  img,
-  name,
-  dailyPrice,
-  mileage,
-  gas,
-  gearType,
-  year,
-}: CarCardType) => {
+const SampleNextArrow = ({ onClick }: ArrowPropsType) => {
   return (
-    <div className={styles.carCard}>
-      <img src={img} alt={name} />
-      <p className={styles.carCard__name}>{name}</p>
-      <p className={styles.carCard__year}>{`(${year})`}</p>
-      <div className={styles.carCard__price}>
-        <p>${dailyPrice} / day</p>
-      </div>
-      <div className={styles.carCard__line} />
-      <div className={styles.carCard__info}>
-        <div className={styles.carCard__info__box}>
-          <RiPinDistanceLine />
-          <p>{mileage}</p>
-        </div>
-        <div className={styles.carCard__info__box}>
-          <BsFillGearFill />
-          <p>{gearType}</p>
-        </div>
-        <div className={styles.carCard__info__box}>
-          <MdWaterDrop />
-          <p>{gas}</p>
-        </div>
-      </div>
-      <Button text="Rent Now" width />
-    </div>
+    <div
+      className={`${styles.arrow} ${styles.arrow__right}`}
+      onClick={onClick}
+    />
+  );
+};
+const SamplePrevArrow = ({ onClick }: ArrowPropsType) => {
+  return (
+    <div
+      className={`${styles.arrow} ${styles.arrow__left}`}
+      onClick={onClick}
+    />
   );
 };
 
 const SlideOffert = () => {
   return (
     <div className={styles.slideOffert}>
-      <CarCard
-        img="./porsche.png"
-        name="Porsche 911"
-        dailyPrice="1500"
-        mileage="10k"
-        gas="Petrol"
-        gearType="automatic"
-        year="2017"
-      />
-      <CarCard
-        img="./audiRS3.PNG"
-        name="Audi RS3"
-        dailyPrice="1000"
-        mileage="1k"
-        gas="Petrol"
-        gearType="automatic"
-        year="2023"
-      />
-      <CarCard
-        img="./Lamborghini Veneno.PNG"
-        name="Lamborghini Veneno"
-        dailyPrice="40 000"
-        mileage="0.5k"
-        gas="Petrol"
-        gearType="automatic"
-        year="2023"
-      />
+      <Slider
+        dots
+        infinite
+        autoplay
+        pauseOnHover
+        slidesToShow={3}
+        slidesToScroll={1}
+        speed={500}
+        initialSlide={0}
+        nextArrow={<SampleNextArrow onClick={onclick} />}
+        prevArrow={<SamplePrevArrow onClick={onclick} />}
+        responsive={[
+          {
+            breakpoint: 1500,
+            settings: {
+              slidesToShow: 2,
+            },
+          },
+          {
+            breakpoint: 1100,
+            settings: {
+              slidesToShow: 1,
+            },
+          },
+        ]}
+      >
+        <CarCard
+          img="./porsche.png"
+          name="Porsche 911"
+          dailyPrice="1500"
+          mileage="10k"
+          gas="Petrol"
+          gearType="automatic"
+          year="2017"
+        />
+        <CarCard
+          img="./audiRS3.PNG"
+          name="Audi RS3"
+          dailyPrice="1000"
+          mileage="1k"
+          gas="Petrol"
+          gearType="automatic"
+          year="2023"
+        />
+        <CarCard
+          img="./Lamborghini Veneno.PNG"
+          name="Lamborghini Veneno"
+          dailyPrice="40 000"
+          mileage="0.5k"
+          gas="Petrol"
+          gearType="automatic"
+          year="2023"
+        />
+        <CarCard
+          img="./porsche.png"
+          name="Porsche 911"
+          dailyPrice="1500"
+          mileage="10k"
+          gas="Petrol"
+          gearType="automatic"
+          year="2017"
+        />
+        <CarCard
+          img="./audiRS3.PNG"
+          name="Audi RS3"
+          dailyPrice="1000"
+          mileage="1k"
+          gas="Petrol"
+          gearType="automatic"
+          year="2023"
+        />
+        <CarCard
+          img="./Lamborghini Veneno.PNG"
+          name="Lamborghini Veneno"
+          dailyPrice="40 000"
+          mileage="0.5k"
+          gas="Petrol"
+          gearType="automatic"
+          year="2023"
+        />
+      </Slider>
     </div>
   );
 };
