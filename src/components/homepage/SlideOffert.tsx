@@ -58,22 +58,13 @@ const SlideOffert = () => {
         ]}
       >
         <CarCard
-          img="./porsche.png"
-          name="Porsche 911"
-          dailyPrice="1500"
-          mileage="10k"
+          img="./Porsche 718 Cayman GT4.PNG"
+          name="Porsche 718 Cayman GT4"
+          dailyPrice="700"
+          mileage="3k"
           gas="Petrol"
           gearType="automatic"
-          year="2017"
-        />
-        <CarCard
-          img="./audiRS3.PNG"
-          name="Audi RS3"
-          dailyPrice="1000"
-          mileage="1k"
-          gas="Petrol"
-          gearType="automatic"
-          year="2023"
+          year="2020"
         />
         <CarCard
           img="./Lamborghini Veneno.PNG"
@@ -85,31 +76,40 @@ const SlideOffert = () => {
           year="2023"
         />
         <CarCard
-          img="./porsche.png"
-          name="Porsche 911"
-          dailyPrice="1500"
+          img="./Audi RS7.PNG"
+          name="Audi RS7"
+          dailyPrice="400"
+          mileage="1k"
+          gas="Petrol"
+          gearType="automatic"
+          year="2020"
+        />
+        <CarCard
+          img="./Audi R8 Performance.PNG"
+          name="Audi R8 Performance"
+          dailyPrice="900"
           mileage="10k"
           gas="Petrol"
           gearType="automatic"
-          year="2017"
+          year="2020"
         />
         <CarCard
-          img="./audiRS3.PNG"
-          name="Audi RS3"
+          img="./Ferrari 488 GTB.PNG"
+          name="Ferrari 488 GTB"
           dailyPrice="1000"
           mileage="1k"
           gas="Petrol"
           gearType="automatic"
-          year="2023"
+          year="2019"
         />
         <CarCard
-          img="./Lamborghini Veneno.PNG"
-          name="Lamborghini Veneno"
-          dailyPrice="40 000"
-          mileage="0.5k"
+          img="./Mustang Shelby GT500.PNG"
+          name="Mustang Shelby GT500"
+          dailyPrice="900"
+          mileage="8k"
           gas="Petrol"
           gearType="automatic"
-          year="2023"
+          year="2022"
         />
       </Slider>
     </div>
