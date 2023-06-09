@@ -2,7 +2,6 @@ import { RiPinDistanceLine } from 'react-icons/ri';
 import { BsFillGearFill } from 'react-icons/bs';
 import { MdWaterDrop } from 'react-icons/md';
 import styles from './CarCard.module.scss';
-import Button from '../ui/Button';
 
 interface CarCardType {
   img: string;
@@ -46,7 +45,12 @@ const CarCard = ({
           <p>{gas}</p>
         </div>
       </div>
-      <Button text="Rent Now" width />
+      <button
+        className={`${styles.button} ${styles.buttonWidth}`}
+        type="button"
+      >
+        Rent Now
+      </button>
     </div>
   );
 };

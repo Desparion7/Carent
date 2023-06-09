@@ -16,7 +16,7 @@
   --bg-color: black;
 }
 body {
-  background-image: url('../public/background.PNG');
+  background-image: url('/background.PNG');
   background-size: contain;
 }
 .wrapper {
@@ -24,6 +24,29 @@ body {
 }
 .react-calendar {
   width: 300px;
+}
+.button {
+  border: none;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: 8px;
+  color: white;
+  border: 2px solid var(--main-background-color);
+  background-color: var(--main-background-color);
+  cursor: pointer;
+  transition: color 0.4s, background-color 0.4s;
+}
+.button:hover {
+  color: var(--main-background-color);
+  background-color: white;
+}
+
+@media screen and (min-width: 414px) {
+  .button {
+    font-size: 1rem;
+    padding: 0.8rem 1.6rem;
+  }
 }
 @media screen and (min-width: 600px) {
   .react-calendar {

@@ -1,7 +1,8 @@
+import { useNavigate } from 'react-router-dom';
 import styles from './TopSection.module.scss';
-import Button from '../ui/Button';
 
 const TopSection = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles.topSection}>
       <video className={styles.video} src="car.mp4" autoPlay muted />
@@ -9,6 +10,7 @@ const TopSection = () => {
         <h1>Rent Your Dream Car&apos;s With Us</h1>
       </div>
       <div className={styles.topSection__carinfo}>
+        {/* <div className={styles.shadow}></div> */}
         <p className={styles.topSection__carinfo__title}>Lamborghini Veneno</p>
         <p className={styles.topSection__carinfo__text}>
           The car is powered by a 6.5-liter V12 engine that generates 750 hp.
@@ -21,8 +23,18 @@ const TopSection = () => {
           only 3 copies of the Veneno will be built.
         </p>
         <div className={styles.topSection__carinfo__btns}>
-          <Button text="Book Ride" />
-          <Button text="See More Car" />
+          <button className={styles.button} type="button">
+            Book Ride
+          </button>
+          <button
+            className={styles.button}
+            onClick={() => {
+              navigate('/cars');
+            }}
+            type="button"
+          >
+            See More Car
+          </button>
         </div>
       </div>
     </div>

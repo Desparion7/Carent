@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { IoIosMail } from 'react-icons/io';
+import { GrMail } from 'react-icons/gr';
 import { AiFillPhone } from 'react-icons/ai';
 import styles from './Footer.module.scss';
 
@@ -24,7 +24,7 @@ const Footer = () => {
           <Link to="/">Home</Link>
           <Link to="/">About Us</Link>
           <Link to="/">Services</Link>
-          <Link to="/">Models</Link>
+          <Link to="/cars">Models</Link>
           <Link to="/">Blog</Link>
         </div>
         <div className={styles.footer__top__links}>
@@ -45,7 +45,7 @@ const Footer = () => {
         <div>
           <p className={styles.title}>Mail</p>
           <p className={styles.footer__top__contact}>
-            <IoIosMail />
+            <GrMail />
             carent@yourcar.com
           </p>
         </div>

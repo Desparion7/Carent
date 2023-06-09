@@ -1,13 +1,12 @@
 @import '../../index.scss';
 
-.bookSection {
+.calendarSection {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  margin-left: 2rem;
   gap: 1rem;
-  width: 100%;
 
   &__container {
     display: flex;
@@ -38,7 +37,7 @@
 }
 
 @media screen and (min-width: 600px) {
-  .bookSection {
+  .calendarSection {
     &__container {
       flex-direction: row;
       &__date {

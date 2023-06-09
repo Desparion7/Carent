@@ -2,13 +2,12 @@ import { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import { BiCalendar } from 'react-icons/bi';
 import dateFormat from 'dateformat';
-import styles from './BookSection.module.scss';
-import Button from '../ui/Button';
+import styles from './CalendarSection.module.scss';
 import 'react-calendar/dist/Calendar.css';
 
 type ValuePiece = Date | null;
 
-const BookSection = () => {
+const CalendarSection = () => {
   const [startDate, setStartDate] = useState<
     ValuePiece | [ValuePiece, ValuePiece]
   >(new Date());
@@ -44,11 +43,11 @@ const BookSection = () => {
   };
 
   return (
-    <div className={`${styles.bookSection} ${styles.wrapper}`}>
-      <div className={styles.bookSection__container}>
+    <div className={`${styles.calendarSection}`}>
+      <div className={styles.calendarSection__container}>
         <div>
           <div
-            className={styles.bookSection__container__date}
+            className={styles.calendarSection__container__date}
             onClick={toggleStartDateCalendar}
             onKeyDown={(event) => {
               if (event.key === 'Enter') {
@@ -64,7 +63,7 @@ const BookSection = () => {
           </div>
           {isstartCalendarOpen && (
             <Calendar
-              className={styles.bookSection__container__calendar}
+              className={styles.calendarSection__container__calendar}
               value={startDate}
               onChange={setStartDate}
             />
@@ -72,7 +71,7 @@ const BookSection = () => {
         </div>
         <div>
           <div
-            className={styles.bookSection__container__date}
+            className={styles.calendarSection__container__date}
             onClick={toggleReturnDateCalendar}
             onKeyDown={(event) => {
               if (event.key === 'Enter') {
@@ -88,7 +87,7 @@ const BookSection = () => {
           </div>
           {isReturnCalendarOpen && (
             <Calendar
-              className={styles.bookSection__container__calendar}
+              className={styles.calendarSection__container__calendar}
               value={returnDate}
               onChange={setReturnDate}
               minDate={startDate as Date}
@@ -96,9 +95,8 @@ const BookSection = () => {
           )}
         </div>
       </div>
-      <Button text="Book Your Ride" />
     </div>
   );
 };
 
-export default BookSection;
+export default CalendarSection;
