@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { IoIosMail } from 'react-icons/Io';
+import { IoIosMail } from 'react-icons/io';
 import { AiFillPhone } from 'react-icons/ai';
 import styles from './Footer.module.scss';
 
