@@ -1,10 +1,10 @@
-import CarsSlideAnimation from '../components/carsPage/CarsSlideAnimation';
+import CarsSlogan from '../components/carsPage/CarsSlogan';
 import FilterSection from '../components/carsPage/FilterSection';
 
 const CarsPage = () => {
   return (
     <div>
-      <CarsSlideAnimation />
+      <CarsSlogan />
       <FilterSection />
     </div>
   );

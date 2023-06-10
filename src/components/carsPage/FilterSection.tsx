@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import styles from './FilterSection.module.scss';
 import CalendarSection from './CalendarSection';
 import CarCard from '../homepage/CarCard';
@@ -32,6 +33,7 @@ const BrandLink = ({ carBrand, brand, handlerBrand }: BrandLinkType) => {
 };
 
 const FilterSection = () => {
+  const isDesktop = useMediaQuery({ minWidth: '900px' });
   const [brand, setBrand] = useState('');
 
   const handlerBrand = (newBrand: string) => {
@@ -41,36 +43,81 @@ const FilterSection = () => {
     <div className={`${styles.filterSection} ${styles.wrapper}`}>
       <div className={styles.filterSection__brands}>
         <p>Car Brand</p>
-        <BrandLink carBrand="All" brand={brand} handlerBrand={handlerBrand} />
-        <BrandLink carBrand="Audi" brand={brand} handlerBrand={handlerBrand} />
-        <BrandLink carBrand="BMW" brand={brand} handlerBrand={handlerBrand} />
-        <BrandLink
-          carBrand="Ferrari"
-          brand={brand}
-          handlerBrand={handlerBrand}
-        />
-        <BrandLink carBrand="Ford" brand={brand} handlerBrand={handlerBrand} />
-        <BrandLink
-          carBrand="Lamborghini"
-          brand={brand}
-          handlerBrand={handlerBrand}
-        />
-        <BrandLink
-          carBrand="Mercedes"
-          brand={brand}
-          handlerBrand={handlerBrand}
-        />
-        <BrandLink
-          carBrand="Porsche"
-          brand={brand}
-          handlerBrand={handlerBrand}
-        />
-        <button className={styles.button} type="button">
-          Filter
-        </button>
+        {!isDesktop && (
+          <select
+            onChange={(e) => {
+              handlerBrand(e.target.value);
+            }}
+          >
+            <option value="All">All</option>
+            <option value="Audi">Audi</option>
+            <option value="BMW">BMW</option>
+            <option value="Ferrari">Ferrari</option>
+            <option value="Lamborghini">Lamborghini</option>
+            <option value="Mercedes">Mercedes</option>
+            <option value="Porsche">Porsche</option>
+          </select>
+        )}
+        {isDesktop && (
+          <>
+            <BrandLink
+              carBrand="All"
+              brand={brand}
+              handlerBrand={handlerBrand}
+            />
+            <BrandLink
+              carBrand="Audi"
+              brand={brand}
+              handlerBrand={handlerBrand}
+            />
+            <BrandLink
+              carBrand="BMW"
+              brand={brand}
+              handlerBrand={handlerBrand}
+            />
+            <BrandLink
+              carBrand="Ferrari"
+              brand={brand}
+              handlerBrand={handlerBrand}
+            />
+            <BrandLink
+              carBrand="Ford"
+              brand={brand}
+              handlerBrand={handlerBrand}
+            />
+            <BrandLink
+              carBrand="Lamborghini"
+              brand={brand}
+              handlerBrand={handlerBrand}
+            />
+            <BrandLink
+              carBrand="Mercedes"
+              brand={brand}
+              handlerBrand={handlerBrand}
+            />
+            <BrandLink
+              carBrand="Porsche"
+              brand={brand}
+              handlerBrand={handlerBrand}
+            />
+          </>
+        )}
+
+        {isDesktop && (
+          <button className={styles.button} type="button">
+            Filter
+          </button>
+        )}
       </div>
       <div>
-        <CalendarSection />
+        <div className={styles.filterSection__filter}>
+          <CalendarSection />
+          {!isDesktop && (
+            <button className={styles.button} type="button">
+              Filter
+            </button>
+          )}
+        </div>
         <div className={styles.filterSection__modelsBox}>
           <CarCard
             img="./Porsche 718 Cayman GT4.PNG"
