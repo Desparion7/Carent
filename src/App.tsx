@@ -1,7 +1,10 @@
+import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import HomePage from './pages/HomePage';
 import Layout from './pages/Layout';
 import CarsPage from './pages/CarsPage';
+import LoadingSpinner from './components/ui/LoadingSpinner';
+
+const LazyHomePage = lazy(() => import('./pages/HomePage'));
 
 const router = createBrowserRouter([
   {
@@ -14,7 +17,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/',
-        element: <HomePage />,
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <LazyHomePage />
+          </Suspense>
+        ),
       },
       {
         path: '/cars',
