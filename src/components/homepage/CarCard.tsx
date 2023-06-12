@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { RiPinDistanceLine } from 'react-icons/ri';
 import { BsFillGearFill } from 'react-icons/bs';
 import { MdWaterDrop } from 'react-icons/md';
@@ -22,6 +23,7 @@ const CarCard = ({
   gearType,
   year,
 }: CarCardType) => {
+  const navigate = useNavigate();
   return (
     <div className={styles.carCard}>
       <img src={img} alt={name} />
@@ -48,6 +50,10 @@ const CarCard = ({
       <button
         className={`${styles.button} ${styles.buttonWidth}`}
         type="button"
+        onClick={() => {
+          const carLink = name.replace(/ /g, '-');
+          navigate(`/${carLink}`);
+        }}
       >
         Rent Now
       </button>

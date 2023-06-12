@@ -3,6 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 import styles from './FilterSection.module.scss';
 import CalendarSection from './CalendarSection';
 import CarCard from '../homepage/CarCard';
+import cars from '../../data/cars';
 
 interface BrandLinkType {
   carBrand: string;
@@ -34,7 +35,7 @@ const BrandLink = ({ carBrand, brand, handlerBrand }: BrandLinkType) => {
 
 const FilterSection = () => {
   const isDesktop = useMediaQuery({ minWidth: '900px' });
-  const [brand, setBrand] = useState('');
+  const [brand, setBrand] = useState('All');
 
   const handlerBrand = (newBrand: string) => {
     setBrand(newBrand);
@@ -53,6 +54,7 @@ const FilterSection = () => {
             <option value="Audi">Audi</option>
             <option value="BMW">BMW</option>
             <option value="Ferrari">Ferrari</option>
+            <option value="Ford">Ferrari</option>
             <option value="Lamborghini">Lamborghini</option>
             <option value="Mercedes">Mercedes</option>
             <option value="Porsche">Porsche</option>
@@ -119,60 +121,18 @@ const FilterSection = () => {
           )}
         </div>
         <div className={styles.filterSection__modelsBox}>
-          <CarCard
-            img="./Porsche 718 Cayman GT4.PNG"
-            name="Porsche 718 Cayman GT4"
-            dailyPrice="700"
-            mileage="3k"
-            gas="Petrol"
-            gearType="automatic"
-            year="2020"
-          />
-          <CarCard
-            img="./Lamborghini Veneno.PNG"
-            name="Lamborghini Veneno"
-            dailyPrice="40 000"
-            mileage="0.5k"
-            gas="Petrol"
-            gearType="automatic"
-            year="2023"
-          />
-          <CarCard
-            img="./Audi RS7.PNG"
-            name="Audi RS7"
-            dailyPrice="400"
-            mileage="1k"
-            gas="Petrol"
-            gearType="automatic"
-            year="2020"
-          />
-          <CarCard
-            img="./Audi R8 Performance.PNG"
-            name="Audi R8 Performance"
-            dailyPrice="900"
-            mileage="10k"
-            gas="Petrol"
-            gearType="automatic"
-            year="2020"
-          />
-          <CarCard
-            img="./Ferrari 488 GTB.PNG"
-            name="Ferrari 488 GTB"
-            dailyPrice="1000"
-            mileage="1k"
-            gas="Petrol"
-            gearType="automatic"
-            year="2019"
-          />
-          <CarCard
-            img="./Mustang Shelby GT500.PNG"
-            name="Mustang Shelby GT500"
-            dailyPrice="900"
-            mileage="8k"
-            gas="Petrol"
-            gearType="automatic"
-            year="2022"
-          />
+          {cars.map((car) => (
+            <CarCard
+              key={car.id}
+              img={car.img[0]}
+              name={car.name}
+              dailyPrice={car.dailyPrice}
+              mileage={car.mileage}
+              gas={car.gas}
+              gearType={car.gearType}
+              year={car.year}
+            />
+          ))}
         </div>
       </div>
     </div>
