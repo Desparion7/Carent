@@ -26,7 +26,22 @@ const CarCard = ({
   const navigate = useNavigate();
   return (
     <div className={styles.carCard}>
-      <img src={img} alt={name} />
+      <div
+        onClick={() => {
+          const carLink = name.replace(/ /g, '-');
+          navigate(`/${carLink}`);
+        }}
+        onKeyDown={(event) => {
+          if (event.key === 'Enter') {
+            const carLink = name.replace(/ /g, '-');
+            navigate(`/${carLink}`);
+          }
+        }}
+        role="button"
+        tabIndex={0}
+      >
+        <img src={img} alt={name} />
+      </div>
       <p className={styles.carCard__name}>{name}</p>
       <p className={styles.carCard__year}>{`(${year})`}</p>
       <div className={styles.carCard__price}>
