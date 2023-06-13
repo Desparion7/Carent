@@ -2,7 +2,7 @@ import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './pages/Layout';
 import CarsPage from './pages/CarsPage';
-import CarPage from './components/carPage/Carpage';
+import CarPage from './components/carPage/CarPage';
 import LoadingSpinner from './components/ui/LoadingSpinner';
 
 const LazyHomePage = lazy(() => import('./pages/HomePage'));

@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <header className={`${styles.header} ${styles.wrapper}`}>
       <div
-        className={styles.header__logo}
+        className={`${styles.header__logo} slide-bottom`}
         onClick={() => {
           navigate('/');
         }}
@@ -31,7 +31,7 @@ const Header = () => {
         <p>CARENT</p>
       </div>
       {isDesktop && (
-        <nav className={styles.header__links}>
+        <nav className={`${styles.header__links} slide-bottom`}>
           <Link to="/">Home</Link>
           <Link to="/cars">Cars</Link>
           <Link to="/aboutus">About Us</Link>

@@ -13,6 +13,7 @@ const CarPage = () => {
     <div className={styles.carPage}>
       <div className={styles.carPage__img}>
         <img src={carInfo?.img[1]} alt={carInfo?.name} />
+        <p>{carInfo?.name}</p>
       </div>
     </div>
   );
