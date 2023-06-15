@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import styles from './TopSection.module.scss';
 
-const TopSection = () => {
+const TopSection = ({ carAnimation }: { carAnimation: string }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.6,
@@ -10,7 +10,7 @@ const TopSection = () => {
   const navigate = useNavigate();
   return (
     <div className={styles.topSection}>
-      <video className={styles.video} src="car.mp4" autoPlay muted />
+      <video className={styles.video} src={carAnimation} autoPlay muted />
       <div className={`${styles.topSection__text} ${styles.showText}`}>
         <h1>Rent Your Dream Car&apos;s With Us</h1>
       </div>
