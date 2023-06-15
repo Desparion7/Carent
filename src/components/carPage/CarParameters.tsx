@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import Slider from 'react-slick';
 import { useMediaQuery } from 'react-responsive';
+import { useInView } from 'react-intersection-observer';
 import styles from './CarParameters.module.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -54,9 +55,19 @@ const CarParameters = ({
   dailyPrice,
 }: Car) => {
   const isDesktop = useMediaQuery({ minWidth: '900px' });
+  const { ref: carInfoRef, inView: carInfoInView } = useInView({
+    threshold: 0,
+    triggerOnce: true,
+  });
+
   return (
     <div className={styles.carParameters}>
-      <div className={styles.carParameters__params}>
+      <div
+        ref={carInfoRef}
+        className={`${styles.carParameters__params} ${
+          carInfoInView ? 'slide-bottom ' : ''
+        }  `}
+      >
         <div className={styles.carParameters__params__title}>{name}</div>
         {!isDesktop && (
           <div className={styles.carParameters__params__title}>
@@ -94,7 +105,7 @@ const CarParameters = ({
           </div>
         </div>
       </div>
-      <div className={styles.carParameters__photos}>
+      <div className={`${styles.carParameters__photos}`}>
         <Slider
           dots
           infinite
