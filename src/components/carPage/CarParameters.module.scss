@@ -1,77 +1,42 @@
 .carParameters {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
+  position: relative;
   color: var(--text-color2);
-  &__leftBox {
-    gap: 1rem;
-    width: 50%;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    &__params {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      padding: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  &__params {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: black;
+    &__title {
+      margin: 0;
       margin-bottom: 1rem;
-      background-color: black;
-      &__title {
-        margin: 0;
-        margin-bottom: 1rem;
-        font-weight: bold;
-        font-size: 2.5rem;
-        color: var(--main-background-color);
-      }
-      &__details {
-        display: flex;
-        gap: 1rem;
-        font-size: 1.2rem;
-        span {
-          color: var(--main-background-color);
-        }
-      }
+      font-weight: bold;
+      text-align: center;
+      font-size: 1.5rem;
+      color: var(--main-background-color);
     }
-    &__photos {
-      position: relative;
-      img {
-        height: 200px;
+    &__details {
+      text-align: center;
+      gap: 1rem;
+      font-size: 1rem;
+      span {
+        color: var(--main-background-color);
       }
     }
   }
-  &__rightBox {
-    position: sticky;
-    top: 160px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    gap: 2rem;
-    margin: 1rem;
-    padding: 2rem;
-    background-color: black;
-    &__price {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: var(--main-background-color);
-    }
-    &__navigation {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      p {
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: color 0.3s;
-      }
-      p:hover {
-        color: var(--main-background-color);
-      }
+  &__photos {
+    position: relative;
+    img {
+      height: 230px;
     }
   }
 }
 
 .arrow {
   position: absolute;
-  display: none;
+  display: block;
   top: 50%;
   padding: 0;
   width: 20px;
@@ -82,7 +47,7 @@
   cursor: pointer;
   z-index: 2;
   &__right {
-    right: 0px;
+    right: 25px;
   }
   &__left {
     left: 0px;
@@ -107,24 +72,19 @@
   color: var(--main-background-color);
 }
 
-@media screen and (min-width: 414px) {
-  .slideOffert {
-    padding: 0 2rem;
-  }
-  .arrow {
-    display: block;
-  }
-}
-@media screen and (min-width: 768px) {
-  .slideOffert {
-    padding: 0 10rem;
-  }
-  .arrow {
-    &__right {
-      right: 25px;
-    }
-    &__left {
-      left: 0px;
+@media screen and (min-width: 900px) {
+  .carParameters {
+    &__params {
+      padding: 2rem;
+      &__title {
+        text-align: start;
+        font-size: 2.5rem;
+      }
+      &__details {
+        display: flex;
+        text-align: start;
+        font-size: 1.2rem;
+      }
     }
   }
 }

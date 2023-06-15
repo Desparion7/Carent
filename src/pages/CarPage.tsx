@@ -2,6 +2,8 @@ import { useParams } from 'react-router-dom';
 import cars from '../data/cars';
 import styles from './CarPage.module.scss';
 import CarParameters from '../components/carPage/CarParameters';
+import CarDescription from '../components/carPage/CarDescription';
+import CarInfoNavigation from '../components/carPage/CarInfoNavigation';
 
 const CarPage = () => {
   const param = useParams();
@@ -15,19 +17,30 @@ const CarPage = () => {
       <div>
         <img src={carInfo?.img[1]} alt={carInfo?.name} />
       </div>
-      <CarParameters
-        name={carInfo?.name}
-        power={carInfo?.power}
-        acceleration={carInfo?.acceleration}
-        drivetrain={carInfo?.drivetrain}
-        engine={carInfo?.engine}
-        gearType={carInfo?.gearType}
-        max={carInfo?.max}
-        torque={carInfo?.torque}
-        seats={carInfo?.seats}
-        dailyPrice={carInfo?.dailyPrice}
-        img={carInfo?.img}
-      />
+      <div className={styles.carPage__container}>
+        <div className={styles.carPage__container__info}>
+          <CarParameters
+            name={carInfo?.name}
+            power={carInfo?.power}
+            acceleration={carInfo?.acceleration}
+            drivetrain={carInfo?.drivetrain}
+            engine={carInfo?.engine}
+            gearType={carInfo?.gearType}
+            max={carInfo?.max}
+            torque={carInfo?.torque}
+            seats={carInfo?.seats}
+            img={carInfo?.img}
+            dailyPrice={carInfo?.dailyPrice}
+          />
+          <CarDescription description={carInfo?.description} />
+          <CarDescription description={carInfo?.description} />
+          <CarDescription description={carInfo?.description} />
+          <CarDescription description={carInfo?.description} />
+          <CarDescription description={carInfo?.description} />
+          <CarDescription description={carInfo?.description} />
+        </div>
+        <CarInfoNavigation dailyPrice={carInfo?.dailyPrice} />
+      </div>
     </div>
   );
 };
