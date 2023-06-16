@@ -19,8 +19,9 @@ const CarPage = () => {
   useEffect(() => {
     const animation = new Image();
     animation.src = carInfo?.img[1] as string;
-    animation.onload = () => {};
-    setImgLoaded(true);
+    animation.onload = () => {
+      setImgLoaded(true);
+    };
   }, [carInfo]);
   let content;
 
