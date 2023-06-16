@@ -26,7 +26,7 @@ const TopSection = () => {
   if (animationLoaded) {
     content = (
       <div className={styles.topSection}>
-        <video className={styles.video} src="./car.mp4" autoPlay muted />
+        <video className={styles.video} src={carAnimation} autoPlay muted />
         <div className={`${styles.topSection__text} ${styles.showText}`}>
           <h1>Rent Your Dream Car&apos;s With Us</h1>
         </div>
