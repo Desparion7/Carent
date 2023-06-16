@@ -1,13 +1,22 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import styles from './TopSection.module.scss';
+import carAnimation from '../../../public/car.mp4';
 
-const TopSection = ({ carAnimation }: { carAnimation: string }) => {
+const TopSection = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.6,
   });
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const animation = new Image();
+    animation.src = carAnimation;
+    animation.onload = () => {};
+  }, []);
+
   return (
     <div className={styles.topSection}>
       <video className={styles.video} src={carAnimation} autoPlay muted />

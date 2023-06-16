@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 import cars from '../data/cars';
 import styles from './CarPage.module.scss';
 import CarParameters from '../components/carPage/CarParameters';
@@ -11,6 +12,12 @@ const CarPage = () => {
   const newCarName = carName.replace(/-/g, ' ');
 
   const carInfo = cars.find((car) => car.name === newCarName);
+
+  useEffect(() => {
+    const animation = new Image();
+    animation.src = carInfo?.img[1] as string;
+    animation.onload = () => {};
+  }, [carInfo]);
 
   return (
     <div className={styles.carPage}>
