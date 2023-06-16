@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import styles from './TopSection.module.scss';
-import carAnimation from '../../../public/car.mp4';
 import LoadingSpinner from '../ui/LoadingSpinner';
+import carAnimation from '../../../public/car.mp4';
 
 const TopSection = () => {
   const [ref, inView] = useInView({
@@ -11,13 +11,12 @@ const TopSection = () => {
     threshold: 0.6,
   });
   const navigate = useNavigate();
-
   const [animationLoaded, setAnimationLoaded] = useState(false);
 
   useEffect(() => {
-    const animation = new Image();
+    const animation = document.createElement('video');
     animation.src = carAnimation;
-    animation.onload = () => {
+    animation.onloadeddata = () => {
       setAnimationLoaded(true);
     };
   }, []);
@@ -27,7 +26,7 @@ const TopSection = () => {
   if (animationLoaded) {
     content = (
       <div className={styles.topSection}>
-        <video className={styles.video} src={carAnimation} autoPlay muted />
+        <video className={styles.video} src="./car.mp4" autoPlay muted />
         <div className={`${styles.topSection__text} ${styles.showText}`}>
           <h1>Rent Your Dream Car&apos;s With Us</h1>
         </div>
