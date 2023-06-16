@@ -17,13 +17,14 @@ const CarPage = () => {
   const [imgLoaded, setImgLoaded] = useState(false);
 
   useEffect(() => {
-    const animation = new Image();
-    animation.src = carInfo?.img[1] as string;
-    animation.onload = () => {
+    const img = new Image();
+    img.src = carInfo?.img[1] as string;
+    img.onload = () => {
       setImgLoaded(true);
     };
   }, [carInfo]);
-  let content;
+
+  let content: JSX.Element;
 
   if (imgLoaded) {
     content = (
