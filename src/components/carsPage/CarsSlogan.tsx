@@ -6,7 +6,7 @@ const CarsSlogan = () => {
       <div className={styles.carsSlogan__img}>
         <img src="./srt.PNG" alt="red lamps doge srt" />
         <div className={styles.carsSlogan__img__shadow}>
-          <p>
+          <p className="scale-up-center">
             Don&apos;t let your <span>dreams</span> remain mere fantasies. With
             our sports and luxury cars, you have the chance to make them a
             reality. Seize the moment, feel the pulsating <span>power</span>{' '}

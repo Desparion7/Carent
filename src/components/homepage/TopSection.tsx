@@ -51,7 +51,13 @@ const TopSection = () => {
               only 3 copies of the Veneno will be built.
             </p>
             <div className={styles.topSection__carinfo__btns}>
-              <button className={styles.button} type="button">
+              <button
+                className={styles.button}
+                onClick={() => {
+                  navigate('/Lamborghini-Veneno');
+                }}
+                type="button"
+              >
                 Book Ride
               </button>
               <button

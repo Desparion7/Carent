@@ -1,8 +1,18 @@
+import { useInView } from 'react-intersection-observer';
 import styles from './AboutUsSection.module.scss';
 
 const AboutUsSection = () => {
+  const { ref: aboutUsRef, inView: aboutUsInView } = useInView({
+    threshold: 0,
+    triggerOnce: true,
+  });
   return (
-    <div className={`${styles.aboutUs} ${styles.wrapper}`}>
+    <div
+      ref={aboutUsRef}
+      className={`${styles.aboutUs} ${styles.wrapper} ${
+        aboutUsInView && 'slide-top'
+      }`}
+    >
       <h2>Best Experience With Our Rental Deals</h2>
       <div className={styles.aboutUs__container}>
         <div className={styles.aboutUs__container__img}>

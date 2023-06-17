@@ -65,7 +65,7 @@ const CarParameters = ({
       <div
         ref={carInfoRef}
         className={`${styles.carParameters__params} ${
-          carInfoInView ? 'slide-bottom ' : ''
+          carInfoInView && 'slide-bottom'
         }  `}
       >
         <div className={styles.carParameters__params__title}>{name}</div>
@@ -105,7 +105,11 @@ const CarParameters = ({
           </div>
         </div>
       </div>
-      <div className={`${styles.carParameters__photos}`}>
+      <div
+        className={`${styles.carParameters__photos} ${
+          carInfoInView && 'slide-top'
+        }`}
+      >
         <Slider
           dots
           infinite
