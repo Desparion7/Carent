@@ -6,14 +6,15 @@ import CarParameters from '../components/carPage/CarParameters';
 import CarDescription from '../components/carPage/CarDescription';
 import CarInfoNavigation from '../components/carPage/CarInfoNavigation';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
+import PriceList from '../components/carPage/PriceList';
 
 const CarPage = () => {
+  const [activePriceList, setActivePriceList] = useState(false);
+
   const param = useParams();
   const carName = param.name as string;
   const newCarName = carName.replace(/-/g, ' ');
-
   const carInfo = cars.find((car) => car.name === newCarName);
-
   const [imgLoaded, setImgLoaded] = useState(false);
 
   useEffect(() => {
@@ -24,8 +25,25 @@ const CarPage = () => {
     };
   }, [carInfo]);
 
-  let content: JSX.Element;
+  const handleScroll = (category: string) => {
+    const element = document.querySelector(category);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start', // Wyświetlenie elementu na całym ekranie
+      });
+    }
+  };
+  const navigateToSection = (category: string) => {
+    handleScroll(category);
+    setActivePriceList(true);
+  };
 
+  const handleOpenPriceList = () => {
+    setActivePriceList(!activePriceList);
+  };
+
+  let content: JSX.Element;
   if (imgLoaded) {
     content = (
       <div className={styles.carPage}>
@@ -48,13 +66,16 @@ const CarPage = () => {
               dailyPrice={carInfo?.dailyPrice}
             />
             <CarDescription description={carInfo?.description} />
-            <CarDescription description={carInfo?.description} />
-            <CarDescription description={carInfo?.description} />
-            <CarDescription description={carInfo?.description} />
-            <CarDescription description={carInfo?.description} />
-            <CarDescription description={carInfo?.description} />
+            <PriceList
+              prices={carInfo?.priceList}
+              active={activePriceList}
+              activePriceList={handleOpenPriceList}
+            />
           </div>
-          <CarInfoNavigation dailyPrice={carInfo?.dailyPrice} />
+          <CarInfoNavigation
+            dailyPrice={carInfo?.dailyPrice}
+            navigateToSection={navigateToSection}
+          />
         </div>
       </div>
     );

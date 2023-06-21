@@ -4,9 +4,13 @@ import styles from './CarInfoNavigation.module.scss';
 
 interface CarInfoNavigationType {
   dailyPrice: string | undefined;
+  navigateToSection: (category: string) => void;
 }
 
-const CarInfoNavigation = ({ dailyPrice }: CarInfoNavigationType) => {
+const CarInfoNavigation = ({
+  dailyPrice,
+  navigateToSection,
+}: CarInfoNavigationType) => {
   const isDesktop = useMediaQuery({ minWidth: '900px' });
 
   const { ref: carNavRef, inView: carNavInView } = useInView({
@@ -27,7 +31,20 @@ const CarInfoNavigation = ({ dailyPrice }: CarInfoNavigationType) => {
             {dailyPrice}$ for 24h
           </p>
           <div className={styles.carInfoNavigation__navigation}>
-            <p>Cennik</p>
+            <p
+              onClick={() => {
+                navigateToSection('.price');
+              }}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  navigateToSection('.price');
+                }
+              }}
+              role="link"
+              tabIndex={0}
+            >
+              Cennik
+            </p>
             <p>Kalendarz</p>
             <p>Opis</p>
             <p>Wyposażenie</p>

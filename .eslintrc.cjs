@@ -28,6 +28,7 @@ module.exports = {
       },
     ],
     'jsx-a11y/label-has-associated-control': 0,
+    'jsx-a11y/no-noninteractive-element-to-interactive-role': 0,
     indent: ['off', 2],
     'prettier/prettier': [
       'error',
