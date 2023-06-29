@@ -2,13 +2,15 @@ import { useRef } from 'react';
 import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
 import styles from './PriceList.module.scss';
 
-type PricesProps = {
-  prices: {
-    '1-2 dni': number;
-    '3-5 dni': number;
-    '6-10 dni': number;
-    '10+ dni': number;
-  };
+export type PricesProps = {
+  prices:
+    | {
+        '1-2 dni': number;
+        '3-5 dni': number;
+        '6-10 dni': number;
+        '10-30 dni': number;
+      }
+    | undefined;
   active: boolean;
   activePriceList: (category: string) => void;
 };
@@ -53,12 +55,13 @@ const PriceList = ({ prices, active, activePriceList }: PricesProps) => {
             </tr>
           </thead>
           <tbody>
-            {Object.entries(prices).map(([period, price]) => (
-              <tr key={period}>
-                <td>{period}</td>
-                <td>{price} $ for day</td>
-              </tr>
-            ))}
+            {prices &&
+              Object.entries(prices).map(([period, price]) => (
+                <tr key={period}>
+                  <td>{period}</td>
+                  <td>{price} $ for day</td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
