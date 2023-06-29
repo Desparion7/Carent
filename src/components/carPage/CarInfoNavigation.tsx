@@ -33,6 +33,20 @@ const CarInfoNavigation = ({
           <div className={styles.carInfoNavigation__navigation}>
             <p
               onClick={() => {
+                navigateToSection('.description');
+              }}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  navigateToSection('.description');
+                }
+              }}
+              role="link"
+              tabIndex={0}
+            >
+              Description
+            </p>
+            <p
+              onClick={() => {
                 navigateToSection('.price');
               }}
               onKeyDown={(event) => {
@@ -43,12 +57,11 @@ const CarInfoNavigation = ({
               role="link"
               tabIndex={0}
             >
-              Cennik
+              Price List
             </p>
-            <p>Kalendarz</p>
-            <p>Opis</p>
-            <p>Wyposażenie</p>
-            <p>Dane techniczne</p>
+            <p>Calendary</p>
+            <p>Equipment</p>
+            <p>Technical Data</p>
           </div>
         </div>
       )}

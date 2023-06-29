@@ -49,7 +49,7 @@ const PriceList = ({ prices, active, activePriceList }: PricesProps) => {
           <thead>
             <tr>
               <th>Rental period</th>
-              <th>Price for period</th>
+              <th>Price</th>
             </tr>
           </thead>
           <tbody>

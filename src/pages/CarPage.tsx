@@ -30,13 +30,15 @@ const CarPage = () => {
     if (element) {
       element.scrollIntoView({
         behavior: 'smooth',
-        block: 'start', // Wyświetlenie elementu na całym ekranie
+        block: 'start',
       });
     }
   };
   const navigateToSection = (category: string) => {
     handleScroll(category);
-    setActivePriceList(true);
+    if (category === '.price') {
+      setActivePriceList(true);
+    }
   };
 
   const handleOpenPriceList = () => {

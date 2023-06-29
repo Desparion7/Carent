@@ -6,7 +6,7 @@ interface CarDescriptionType {
 
 const CarDescription = ({ description }: CarDescriptionType) => {
   return (
-    <div className={styles.carDescription}>
+    <div className={`${styles.carDescription} description`}>
       <div className={styles.carDescription__text}>{description}</div>
       <div className={styles.carDescription__whitespace} />
     </div>
