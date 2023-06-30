@@ -1,7 +1,5 @@
 import { useRef } from 'react';
 import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
-import { TbCarTurbine } from 'react-icons/tb';
-import { GrLineChart } from 'react-icons/gr';
 import styles from './TechnicalData.module.scss';
 
 export type TechnicalProps = {
@@ -9,7 +7,7 @@ export type TechnicalProps = {
   activeTechnical: (category: string) => void;
   mileage: string | undefined;
   gas: string | undefined;
-  gearType: string | undefined;
+  transmission: string | undefined;
   year: string | undefined;
   drivetrain: string | undefined;
   power: string | undefined;
@@ -26,7 +24,7 @@ const TechnicalData = ({
   activeTechnical,
   mileage,
   gas,
-  gearType,
+  transmission,
   year,
   drivetrain,
   power,
@@ -68,12 +66,52 @@ const TechnicalData = ({
         }
       >
         <div className={styles['technicalData__parameters--item']}>
-          <TbCarTurbine />
+          <img src="./turbine.PNG" alt="turbine" />
           <p>Power: {power} KM</p>
         </div>
         <div className={styles['technicalData__parameters--item']}>
-          <GrLineChart />
+          <img src="./chart.PNG" alt="chart" />
           <p>Torque: {torque}</p>
+        </div>
+        <div className={styles['technicalData__parameters--item']}>
+          <img src="./acceleration.PNG" alt="acceleration" />
+          <p>Acceleration: {acceleration}</p>
+        </div>
+        <div className={styles['technicalData__parameters--item']}>
+          <img src="./speed.PNG" alt="speed" />
+          <p>Top Speed: {max}</p>
+        </div>
+        <div className={styles['technicalData__parameters--item']}>
+          <img src="./engine.PNG" alt="engine" />
+          <p>Engine: {engine}</p>
+        </div>
+        <div className={styles['technicalData__parameters--item']}>
+          <img src="./transmission.PNG" alt="transmission" />
+          <p>Transmission: {transmission}</p>
+        </div>
+        <div className={styles['technicalData__parameters--item']}>
+          <img src="./gas.PNG" alt="gas" />
+          <p>Gas: {gas}</p>
+        </div>
+        <div className={styles['technicalData__parameters--item']}>
+          <img src="./drivetrain.PNG" alt="drivetrain" />
+          <p>Drivetrain: {drivetrain}</p>
+        </div>
+        <div className={styles['technicalData__parameters--item']}>
+          <img src="./seats.PNG" alt="seats" />
+          <p>Seats: {seats}</p>
+        </div>
+        <div className={styles['technicalData__parameters--item']}>
+          <img src="./mileage.PNG" alt="mileage" />
+          <p>Mileage: {mileage}</p>
+        </div>
+        <div className={styles['technicalData__parameters--item']}>
+          <img src="./year.PNG" alt="year" />
+          <p>Year: {year}</p>
+        </div>
+        <div className={styles['technicalData__parameters--item']}>
+          <img src="./color.PNG" alt="color" />
+          <p>Color: {color}</p>
         </div>
       </div>
     </div>

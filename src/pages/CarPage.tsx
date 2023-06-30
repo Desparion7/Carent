@@ -74,7 +74,11 @@ const CarPage = () => {
     content = (
       <div className={styles.carPage}>
         <div>
-          <img src={carInfo?.img[1]} alt={carInfo?.name} />
+          <img
+            src={carInfo?.img[1]}
+            alt={carInfo?.name}
+            className={styles.carPage__img}
+          />
         </div>
         <div className={styles.carPage__container}>
           <div className={styles.carPage__container__info}>
@@ -84,7 +88,7 @@ const CarPage = () => {
               acceleration={carInfo?.acceleration}
               drivetrain={carInfo?.drivetrain}
               engine={carInfo?.engine}
-              gearType={carInfo?.gearType}
+              transmission={carInfo?.transmission}
               max={carInfo?.max}
               torque={carInfo?.torque}
               seats={carInfo?.seats}
@@ -113,7 +117,7 @@ const CarPage = () => {
               acceleration={carInfo?.acceleration}
               drivetrain={carInfo?.drivetrain}
               engine={carInfo?.engine}
-              gearType={carInfo?.gearType}
+              transmission={carInfo?.transmission}
               max={carInfo?.max}
               torque={carInfo?.torque}
               seats={carInfo?.seats}

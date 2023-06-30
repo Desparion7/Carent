@@ -10,7 +10,7 @@ interface CarCardType {
   dailyPrice: string;
   mileage: string;
   gas: string;
-  gearType: string;
+  transmission: string;
   year: string;
 }
 
@@ -20,7 +20,7 @@ const CarCard = ({
   dailyPrice,
   mileage,
   gas,
-  gearType,
+  transmission,
   year,
 }: CarCardType) => {
   const navigate = useNavigate();
@@ -55,7 +55,7 @@ const CarCard = ({
         </div>
         <div className={styles.carCard__info__box}>
           <BsFillGearFill />
-          <p>{gearType}</p>
+          <p>{transmission}</p>
         </div>
         <div className={styles.carCard__info__box}>
           <MdWaterDrop />

@@ -129,7 +129,7 @@ const FilterSection = () => {
               dailyPrice={car.dailyPrice}
               mileage={car.mileage}
               gas={car.gas}
-              gearType={car.gearType}
+              transmission={car.transmission}
               year={car.year}
             />
           ))}

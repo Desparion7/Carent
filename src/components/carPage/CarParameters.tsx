@@ -15,7 +15,7 @@ interface Car {
   drivetrain: string | undefined;
   torque: string | undefined;
   max: string | undefined;
-  gearType: string | undefined;
+  transmission: string | undefined;
   seats: string | undefined;
   img: string[] | undefined;
   dailyPrice: string | undefined;
@@ -49,7 +49,7 @@ const CarParameters = ({
   drivetrain,
   torque,
   max,
-  gearType,
+  transmission,
   seats,
   img,
   dailyPrice,
@@ -97,7 +97,7 @@ const CarParameters = ({
               Drive: <span>{drivetrain}</span>
             </p>
             <p>
-              Transmission: <span>{gearType}</span>
+              Transmission: <span>{transmission}</span>
             </p>
             <p>
               Seats: <span>{seats}</span>
