@@ -59,9 +59,48 @@ const CarInfoNavigation = ({
             >
               Price List
             </p>
-            <p>Calendary</p>
-            <p>Equipment</p>
-            <p>Technical Data</p>
+            <p
+              onClick={() => {
+                navigateToSection('.calendar');
+              }}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  navigateToSection('.calendar');
+                }
+              }}
+              role="link"
+              tabIndex={0}
+            >
+              Calendar
+            </p>
+            <p
+              onClick={() => {
+                navigateToSection('.equipments');
+              }}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  navigateToSection('.equipments');
+                }
+              }}
+              role="link"
+              tabIndex={0}
+            >
+              Equipment
+            </p>
+            <p
+              onClick={() => {
+                navigateToSection('.technical');
+              }}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  navigateToSection('.technical');
+                }
+              }}
+              role="link"
+              tabIndex={0}
+            >
+              Technical Data
+            </p>
           </div>
         </div>
       )}

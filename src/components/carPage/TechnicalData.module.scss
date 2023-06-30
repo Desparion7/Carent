@@ -1,0 +1,36 @@
+.technicalData {
+  position: relative;
+  margin-bottom: 2rem;
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    padding-left: 0.5rem;
+    cursor: pointer;
+    svg {
+      font-size: 1rem;
+    }
+  }
+  &__parameters {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease;
+    &--item {
+      display: flex;
+      width: 300px;
+      padding: 0.5rem;
+      gap: 0.5rem;
+      border-bottom: 3px solid var(--main-background-color);
+      svg {
+        font-size: 2rem;
+      }
+    }
+  }
+}

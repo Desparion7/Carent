@@ -7,9 +7,15 @@ import CarDescription from '../components/carPage/CarDescription';
 import CarInfoNavigation from '../components/carPage/CarInfoNavigation';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import PriceList from '../components/carPage/PriceList';
+import Equipments from '../components/carPage/Equipments';
+import Calendar from '../components/carPage/Calendar';
+import TechnicalData from '../components/carPage/TechnicalData';
 
 const CarPage = () => {
   const [activePriceList, setActivePriceList] = useState(false);
+  const [activeCalendar, setActiveCalendar] = useState(false);
+  const [activeEquipments, setActiveEquipments] = useState(false);
+  const [activeTechnical, setActiveTechnical] = useState(false);
 
   const param = useParams();
   const carName = param.name as string;
@@ -39,10 +45,28 @@ const CarPage = () => {
     if (category === '.price') {
       setActivePriceList(true);
     }
+    if (category === '.calendary') {
+      setActiveCalendar(true);
+    }
+    if (category === '.technical') {
+      setActiveTechnical(true);
+    }
+    if (category === '.equipments') {
+      setActiveEquipments(true);
+    }
   };
 
   const handleOpenPriceList = () => {
     setActivePriceList(!activePriceList);
+  };
+  const handleOpenCalendar = () => {
+    setActiveCalendar(!activeCalendar);
+  };
+  const handleOpenTechnical = () => {
+    setActiveTechnical(!activeTechnical);
+  };
+  const handleOpenEquipments = () => {
+    setActiveEquipments(!activeEquipments);
   };
 
   let content: JSX.Element;
@@ -72,6 +96,31 @@ const CarPage = () => {
               prices={carInfo?.priceList}
               active={activePriceList}
               activePriceList={handleOpenPriceList}
+            />
+            <Calendar
+              active={activeCalendar}
+              activeCalendar={handleOpenCalendar}
+            />
+            <Equipments
+              active={activeEquipments}
+              activeEquipments={handleOpenEquipments}
+              equipment={carInfo?.equipment}
+            />
+            <TechnicalData
+              active={activeTechnical}
+              activeTechnical={handleOpenTechnical}
+              power={carInfo?.power}
+              acceleration={carInfo?.acceleration}
+              drivetrain={carInfo?.drivetrain}
+              engine={carInfo?.engine}
+              gearType={carInfo?.gearType}
+              max={carInfo?.max}
+              torque={carInfo?.torque}
+              seats={carInfo?.seats}
+              year={carInfo?.year}
+              color={carInfo?.color}
+              gas={carInfo?.gas}
+              mileage={carInfo?.mileage}
             />
           </div>
           <CarInfoNavigation
