@@ -8,7 +8,7 @@ import CarInfoNavigation from '../components/carPage/CarInfoNavigation';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import PriceList from '../components/carPage/PriceList';
 import Equipments from '../components/carPage/Equipments';
-import Calendar from '../components/carPage/Calendar';
+import CalendarPicker from '../components/carPage/CalendarPicker';
 import TechnicalData from '../components/carPage/TechnicalData';
 
 const CarPage = () => {
@@ -37,6 +37,7 @@ const CarPage = () => {
       element.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
+        inline: 'center',
       });
     }
   };
@@ -101,7 +102,7 @@ const CarPage = () => {
               active={activePriceList}
               activePriceList={handleOpenPriceList}
             />
-            <Calendar
+            <CalendarPicker
               active={activeCalendar}
               activeCalendar={handleOpenCalendar}
             />
