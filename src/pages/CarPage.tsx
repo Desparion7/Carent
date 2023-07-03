@@ -46,7 +46,7 @@ const CarPage = () => {
     if (category === '.price') {
       setActivePriceList(true);
     }
-    if (category === '.calendary') {
+    if (category === '.calendar') {
       setActiveCalendar(true);
     }
     if (category === '.technical') {

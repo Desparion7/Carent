@@ -17,7 +17,7 @@
   }
   &__parameters {
     display: grid;
-    grid-template: repeat(4, auto) / repeat(3, 1fr);
+    grid-template: repeat(4, auto) / repeat(1, 1fr);
     gap: 1rem;
     padding: 0.5rem;
     height: 0;
@@ -38,6 +38,20 @@
         width: 50px;
         height: 40px;
       }
+    }
+  }
+}
+@media screen and (min-width: 800px) {
+  .technicalData {
+    &__parameters {
+      grid-template: repeat(4, auto) / repeat(2, 1fr);
+    }
+  }
+}
+@media screen and (min-width: 1600px) {
+  .technicalData {
+    &__parameters {
+      grid-template: repeat(4, auto) / repeat(3, 1fr);
     }
   }
 }
