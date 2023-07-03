@@ -5,10 +5,10 @@ import styles from './PriceList.module.scss';
 export type PricesProps = {
   prices:
     | {
-        '1-2 dni': number;
-        '3-5 dni': number;
-        '6-10 dni': number;
-        '10-30 dni': number;
+        '1-2 days': number;
+        '3-5 days': number;
+        '6-10 days': number;
+        '10-30 days': number;
       }
     | undefined;
   active: boolean;

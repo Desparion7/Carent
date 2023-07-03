@@ -105,6 +105,8 @@ const CarPage = () => {
             <CalendarPicker
               active={activeCalendar}
               activeCalendar={handleOpenCalendar}
+              priceList={carInfo?.priceList}
+              calendar={carInfo?.calendar}
             />
             <Equipments
               active={activeEquipments}

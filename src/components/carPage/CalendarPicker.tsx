@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
 import { isSameDay, format } from 'date-fns';
 import Calendar from 'react-calendar';
@@ -7,15 +7,34 @@ import styles from './CalendarPicker.module.scss';
 export type CalendarProps = {
   active: boolean;
   activeCalendar: (category: string) => void;
+  calendar: Date[] | undefined;
+  priceList:
+    | {
+        '1-2 days': number;
+        '3-5 days': number;
+        '6-10 days': number;
+        '10-30 days': number;
+      }
+    | undefined;
 };
 
-const CalendarPicker = ({ active, activeCalendar }: CalendarProps) => {
-  const selectedDates: Date[] = [new Date(2023, 6, 15), new Date(2023, 6, 20)]; // Przykładowe wybrane daty
+const CalendarPicker = ({
+  active,
+  activeCalendar,
+  priceList,
+  calendar,
+}: CalendarProps) => {
+  const selectedDates: Date[] = calendar || [
+    new Date(2023, 6, 15),
+    new Date(2023, 6, 20),
+  ]; // Przykładowe wybrane daty
   const [value, onChange] = useState<Date[]>([new Date(), new Date()]);
+  const [dateIsSelectedError, setDateIsSelectedError] = useState(false);
   const [pickupDate, setPickupDate] = useState<string>('');
   const [returnDate, setReturnDate] = useState<string>('');
-  const [dateIsSelected, setDateIsSelected] = useState(false);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
 
+  const calendarRef = useRef<HTMLDivElement>(null);
   // Add class for seleted date from data base
   const tileClassName = ({ date }: { date: Date }) => {
     if (selectedDates.some((selectedDate) => isSameDay(selectedDate, date))) {
@@ -42,9 +61,33 @@ const CalendarPicker = ({ active, activeCalendar }: CalendarProps) => {
       newUserDates.includes(element)
     );
     if (inRange) {
-      setDateIsSelected(true);
+      setDateIsSelectedError(true);
     } else {
-      setDateIsSelected(false);
+      setDateIsSelectedError(false);
+    }
+  };
+  // Function to set price for day
+  const handlePriceForDay = (dates: Date[]) => {
+    if (dates.length <= 2) {
+      const price = priceList?.['1-2 days'];
+      if (price) {
+        setTotalPrice(price * dates.length);
+      }
+    } else if (dates.length > 2 && dates.length < 6) {
+      const price = priceList?.['3-5 days'];
+      if (price) {
+        setTotalPrice(price * dates.length);
+      }
+    } else if (dates.length >= 6 && dates.length < 11) {
+      const price = priceList?.['6-10 days'];
+      if (price) {
+        setTotalPrice(price * dates.length);
+      }
+    } else if (dates.length > 10) {
+      const price = priceList?.['10-30 days'];
+      if (price) {
+        setTotalPrice(price * dates.length);
+      }
     }
   };
 
@@ -61,12 +104,12 @@ const CalendarPicker = ({ active, activeCalendar }: CalendarProps) => {
         setReturnDate(newReturnDate);
         const dates = addDates(updatedValue);
         checkingDates(dates);
+        handlePriceForDay(dates);
       }
     } else {
       onChange([date]);
     }
   };
-  // console.log(dateString);
   return (
     <div className={`${styles.calendary} calendar`}>
       <div
@@ -85,7 +128,17 @@ const CalendarPicker = ({ active, activeCalendar }: CalendarProps) => {
         <p> Calendar</p>
         {active ? <SlArrowUp /> : <SlArrowDown />}
       </div>
-      <div className={styles.calendary__booking}>
+      <div
+        ref={calendarRef}
+        className={styles.calendary__booking}
+        style={
+          active && calendarRef.current
+            ? {
+                height: `${calendarRef.current.scrollHeight}px`,
+              }
+            : { height: '0px' }
+        }
+      >
         <div>
           <Calendar
             tileClassName={tileClassName}
@@ -95,17 +148,28 @@ const CalendarPicker = ({ active, activeCalendar }: CalendarProps) => {
           />
         </div>
         <div className={styles['calendary__booking--dates']}>
+          <h3>Availability</h3>
           <p>
             Pickup Date: <span>{pickupDate}</span>{' '}
           </p>
           <p>
             Return Date: <span>{returnDate}</span>
           </p>
-          {dateIsSelected && (
+          {dateIsSelectedError ? (
             <p className={styles['calendary__booking--dates-error']}>
               The car is not available in the selected range
             </p>
+          ) : (
+            <p>Total Price: {totalPrice}$</p>
           )}
+          <button className="button" type="button">
+            Book Car
+          </button>
+        </div>
+        <div>
+          <h3>General terms</h3>
+          <p>The amount of the deposit {priceList?.['1-2 days']}$.</p>
+          <p>Max mileage per day 200 mileage.</p>
         </div>
       </div>
     </div>
