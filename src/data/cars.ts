@@ -9,6 +9,7 @@ const cars = [
       './Porsche 718 Cayman GT4/3.PNG',
     ],
     name: 'Porsche 718 Cayman GT4',
+    brand: 'Porsche',
     dailyPrice: '700',
     priceList: {
       '1-2 days': 700,
@@ -49,6 +50,7 @@ const cars = [
     ],
 
     name: 'Lamborghini Veneno',
+    brand: 'Lamborghini',
     dailyPrice: '40 000',
     priceList: {
       '1-2 days': 40000,
@@ -87,6 +89,7 @@ const cars = [
       './Audi RS7/3.PNG',
     ],
     name: 'Audi RS7',
+    brand: 'Audi',
     dailyPrice: '400',
     priceList: {
       '1-2 days': 400,
@@ -126,6 +129,7 @@ const cars = [
       './Audi R8 Performance/3.PNG',
     ],
     name: 'Audi R8 Performance',
+    brand: 'Audi',
     dailyPrice: '900',
     priceList: {
       '1-2 days': 900,
@@ -166,6 +170,7 @@ const cars = [
       './Ferrari 488 GTB/3.PNG',
     ],
     name: 'Ferrari 488 GTB',
+    brand: 'Ferrari',
     dailyPrice: '1000',
     priceList: {
       '1-2 days': 1000,
@@ -205,6 +210,7 @@ const cars = [
       './Mustang Shelby GT500/3.PNG',
     ],
     name: 'Mustang Shelby GT500',
+    brand: 'Ford',
     dailyPrice: '900',
     priceList: {
       '1-2 days': 900,
@@ -244,6 +250,7 @@ const cars = [
       './Mercedes CLA45s AMG/3.PNG',
     ],
     name: 'Mercedes CLA45s AMG',
+    brand: 'Mercedes',
     dailyPrice: '250',
     priceList: {
       '1-2 days': 250,
@@ -283,6 +290,7 @@ const cars = [
       './BMW M5 Competition/3.PNG',
     ],
     name: 'BMW M5 Competition',
+    brand: 'BMW',
     dailyPrice: '400',
     priceList: {
       '1-2 days': 400,
@@ -321,6 +329,7 @@ const cars = [
       './AudiRS3/3.PNG',
     ],
     name: 'Audi RS3',
+    brand: 'Audi',
     dailyPrice: '200',
     priceList: {
       '1-2 days': 200,

@@ -5,7 +5,8 @@ import styles from './SlideOffert.module.scss';
 import CarCard from './CarCard';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import cars from '../../data/cars';
+import { useGetCarsQuery } from '../../app/slices/carsApiSlice';
+import LoadingSpinner from '../ui/LoadingSpinner';
 
 interface ArrowPropsType {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -30,47 +31,56 @@ const SamplePrevArrow = ({ onClick }: ArrowPropsType) => {
 };
 
 const SlideOffert = () => {
+  const { data, isError, isLoading, isSuccess } = useGetCarsQuery();
   return (
     <div className={styles.slideOffert}>
-      <Slider
-        dots
-        infinite
-        autoplay
-        pauseOnHover
-        slidesToShow={3}
-        slidesToScroll={1}
-        speed={500}
-        initialSlide={0}
-        nextArrow={<SampleNextArrow onClick={onclick} />}
-        prevArrow={<SamplePrevArrow onClick={onclick} />}
-        responsive={[
-          {
-            breakpoint: 1500,
-            settings: {
-              slidesToShow: 2,
+      {isLoading && <LoadingSpinner />}
+      {isError && (
+        <div className={styles.errorText}>
+          <p>Connection problem, failed to fetch car list!</p>
+        </div>
+      )}
+      {isSuccess && (
+        <Slider
+          dots
+          infinite
+          autoplay
+          pauseOnHover
+          slidesToShow={3}
+          slidesToScroll={1}
+          speed={500}
+          initialSlide={0}
+          nextArrow={<SampleNextArrow onClick={onclick} />}
+          prevArrow={<SamplePrevArrow onClick={onclick} />}
+          responsive={[
+            {
+              breakpoint: 1500,
+              settings: {
+                slidesToShow: 2,
+              },
             },
-          },
-          {
-            breakpoint: 1100,
-            settings: {
-              slidesToShow: 1,
+            {
+              breakpoint: 1100,
+              settings: {
+                slidesToShow: 1,
+              },
             },
-          },
-        ]}
-      >
-        {cars.map((car) => (
-          <CarCard
-            key={car.id}
-            img={car.img[0]}
-            name={car.name}
-            dailyPrice={car.dailyPrice}
-            mileage={car.mileage}
-            gas={car.gas}
-            transmission={car.transmission}
-            year={car.year}
-          />
-        ))}
-      </Slider>
+          ]}
+        >
+          {data.map((car) => (
+            <CarCard
+              key={car._id}
+              img={car.img[0]}
+              name={car.name}
+              dailyPrice={car.dailyPrice}
+              mileage={car.mileage}
+              gas={car.gas}
+              transmission={car.transmission}
+              year={car.year}
+            />
+          ))}
+        </Slider>
+      )}
     </div>
   );
 };
