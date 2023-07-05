@@ -15,7 +15,12 @@ export interface Car {
   mileage: string;
   name: string;
   power: string;
-  priceList: Map<string, number>;
+  priceList: {
+    '1-2 days': number;
+    '3-5 days': number;
+    '6-10 days': number;
+    '10-30 days': number;
+  };
   seats: string;
   torque: string;
   transmission: string;

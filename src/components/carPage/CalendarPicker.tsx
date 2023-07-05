@@ -24,16 +24,18 @@ const CalendarPicker = ({
   priceList,
   calendar,
 }: CalendarProps) => {
-  const selectedDates: Date[] = calendar || [
-    new Date(2023, 6, 15),
-    new Date(2023, 6, 20),
-  ]; // Przykładowe wybrane daty
+  // Convert string date from backend to Date format
+  const convertedDate: Date[] = [];
+  calendar?.forEach((date) => {
+    const newDate = new Date(date);
+    convertedDate.push(newDate);
+  });
+  const selectedDates: Date[] = convertedDate;
   const [value, onChange] = useState<Date[]>([new Date(), new Date()]);
   const [dateIsSelectedError, setDateIsSelectedError] = useState(false);
   const [pickupDate, setPickupDate] = useState<string>('');
   const [returnDate, setReturnDate] = useState<string>('');
   const [totalPrice, setTotalPrice] = useState<number>(0);
-
   const calendarRef = useRef<HTMLDivElement>(null);
   // Add class for seleted date from data base
   const tileClassName = ({ date }: { date: Date }) => {

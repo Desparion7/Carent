@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import cars from '../data/cars';
 import styles from './CarPage.module.scss';
 import CarParameters from '../components/carPage/CarParameters';
 import CarDescription from '../components/carPage/CarDescription';
@@ -10,6 +9,7 @@ import PriceList from '../components/carPage/PriceList';
 import Equipments from '../components/carPage/Equipments';
 import CalendarPicker from '../components/carPage/CalendarPicker';
 import TechnicalData from '../components/carPage/TechnicalData';
+import { useGetCarQuery } from '../app/slices/carsApiSlice';
 
 const CarPage = () => {
   const [activePriceList, setActivePriceList] = useState(false);
@@ -20,16 +20,19 @@ const CarPage = () => {
   const param = useParams();
   const carName = param.name as string;
   const newCarName = carName.replace(/-/g, ' ');
-  const carInfo = cars.find((car) => car.name === newCarName);
+  const { data, isError, isLoading, isSuccess } = useGetCarQuery({
+    name: newCarName,
+  });
+
   const [imgLoaded, setImgLoaded] = useState(false);
 
   useEffect(() => {
     const img = new Image();
-    img.src = carInfo?.img[1] as string;
+    img.src = data?.img[1] as string;
     img.onload = () => {
       setImgLoaded(true);
     };
-  }, [carInfo]);
+  }, [data]);
 
   const handleScroll = (category: string) => {
     const element = document.querySelector(category);
@@ -71,70 +74,79 @@ const CarPage = () => {
   };
 
   let content: JSX.Element;
-  if (imgLoaded) {
+  if (imgLoaded && isSuccess) {
     content = (
       <div className={styles.carPage}>
         <div>
           <img
-            src={carInfo?.img[1]}
-            alt={carInfo?.name}
+            src={data?.img[1]}
+            alt={data?.name}
             className={styles.carPage__img}
           />
         </div>
         <div className={styles.carPage__container}>
           <div className={styles.carPage__container__info}>
             <CarParameters
-              name={carInfo?.name}
-              power={carInfo?.power}
-              acceleration={carInfo?.acceleration}
-              drivetrain={carInfo?.drivetrain}
-              engine={carInfo?.engine}
-              transmission={carInfo?.transmission}
-              max={carInfo?.max}
-              torque={carInfo?.torque}
-              seats={carInfo?.seats}
-              img={carInfo?.img}
-              dailyPrice={carInfo?.dailyPrice}
+              name={data?.name}
+              power={data?.power}
+              acceleration={data?.acceleration}
+              drivetrain={data?.drivetrain}
+              engine={data?.engine}
+              transmission={data?.transmission}
+              max={data?.max}
+              torque={data?.torque}
+              seats={data?.seats}
+              img={data?.img}
+              dailyPrice={data?.dailyPrice}
             />
-            <CarDescription description={carInfo?.description} />
+            <CarDescription description={data?.description} />
             <PriceList
-              prices={carInfo?.priceList}
+              prices={data?.priceList}
               active={activePriceList}
               activePriceList={handleOpenPriceList}
             />
             <CalendarPicker
               active={activeCalendar}
               activeCalendar={handleOpenCalendar}
-              priceList={carInfo?.priceList}
-              calendar={carInfo?.calendar}
+              priceList={data?.priceList}
+              calendar={data?.calendar}
             />
             <Equipments
               active={activeEquipments}
               activeEquipments={handleOpenEquipments}
-              equipment={carInfo?.equipment}
+              equipment={data?.equipment}
             />
             <TechnicalData
               active={activeTechnical}
               activeTechnical={handleOpenTechnical}
-              power={carInfo?.power}
-              acceleration={carInfo?.acceleration}
-              drivetrain={carInfo?.drivetrain}
-              engine={carInfo?.engine}
-              transmission={carInfo?.transmission}
-              max={carInfo?.max}
-              torque={carInfo?.torque}
-              seats={carInfo?.seats}
-              year={carInfo?.year}
-              color={carInfo?.color}
-              gas={carInfo?.gas}
-              mileage={carInfo?.mileage}
+              power={data?.power}
+              acceleration={data?.acceleration}
+              drivetrain={data?.drivetrain}
+              engine={data?.engine}
+              transmission={data?.transmission}
+              max={data?.max}
+              torque={data?.torque}
+              seats={data?.seats}
+              year={data?.year}
+              color={data?.color}
+              gas={data?.gas}
+              mileage={data?.mileage}
             />
           </div>
           <CarInfoNavigation
-            dailyPrice={carInfo?.dailyPrice}
+            dailyPrice={data?.dailyPrice}
             navigateToSection={navigateToSection}
           />
         </div>
+      </div>
+    );
+  } else if (isLoading) {
+    content = <LoadingSpinner />;
+  } else if (isError) {
+    content = (
+      <div className={styles.errorText}>
+        <p>Issue with fetching car data!</p>
+        <p>404 Not Found.</p>
       </div>
     );
   } else {

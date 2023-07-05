@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import apiSlice from '../api/apiSlice';
 import { Car } from '../../interface/car.interface';
 
@@ -11,7 +10,14 @@ const carsApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: [{ type: 'Cars', id: 'LIST' }],
     }),
+    getCar: builder.query<Car, { name: string }>({
+      query: ({ name }) => ({
+        url: `/cars/${name}`,
+        method: 'GET',
+      }),
+      providesTags: [{ type: 'Car', id: 'LIST' }],
+    }),
   }),
 });
 
-export const { useGetCarsQuery } = carsApiSlice;
+export const { useGetCarsQuery, useGetCarQuery } = carsApiSlice;
