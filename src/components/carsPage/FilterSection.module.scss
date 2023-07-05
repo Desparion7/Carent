@@ -42,6 +42,12 @@
     margin-top: 2rem;
   }
 }
+.errorText {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: red;
+}
 
 .active {
   color: var(--main-background-color);

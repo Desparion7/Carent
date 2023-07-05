@@ -3,7 +3,8 @@ import { useMediaQuery } from 'react-responsive';
 import styles from './FilterSection.module.scss';
 import CalendarSection from './CalendarSection';
 import CarCard from '../homepage/CarCard';
-import cars from '../../data/cars';
+import { useGetCarsQuery } from '../../app/slices/carsApiSlice';
+import LoadingSpinner from '../ui/LoadingSpinner';
 
 interface BrandLinkType {
   carBrand: string;
@@ -36,7 +37,7 @@ const BrandLink = ({ carBrand, brand, handlerBrand }: BrandLinkType) => {
 const FilterSection = () => {
   const isDesktop = useMediaQuery({ minWidth: '900px' });
   const [brand, setBrand] = useState('All');
-
+  const { data, isError, isLoading, isSuccess } = useGetCarsQuery({ brand });
   const handlerBrand = (newBrand: string) => {
     setBrand(newBrand);
   };
@@ -120,20 +121,28 @@ const FilterSection = () => {
             </button>
           )}
         </div>
-        <div className={styles.filterSection__modelsBox}>
-          {cars.map((car) => (
-            <CarCard
-              key={car.id}
-              img={car.img[0]}
-              name={car.name}
-              dailyPrice={car.dailyPrice}
-              mileage={car.mileage}
-              gas={car.gas}
-              transmission={car.transmission}
-              year={car.year}
-            />
-          ))}
-        </div>
+        {isLoading && <LoadingSpinner />}
+        {isError && (
+          <div className={styles.errorText}>
+            <p>No car found!</p>
+          </div>
+        )}
+        {isSuccess && (
+          <div className={styles.filterSection__modelsBox}>
+            {data.map((car) => (
+              <CarCard
+                key={car._id}
+                img={car.img[0]}
+                name={car.name}
+                dailyPrice={car.dailyPrice}
+                mileage={car.mileage}
+                gas={car.gas}
+                transmission={car.transmission}
+                year={car.year}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

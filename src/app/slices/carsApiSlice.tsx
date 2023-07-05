@@ -4,9 +4,9 @@ import { Car } from '../../interface/car.interface';
 
 const carsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getCars: builder.query<Car[], void>({
-      query: () => ({
-        url: '/cars',
+    getCars: builder.query<Car[], { brand: string }>({
+      query: ({ brand }) => ({
+        url: `/cars?brand=${brand}`,
         method: 'GET',
       }),
       providesTags: [{ type: 'Cars', id: 'LIST' }],

@@ -31,7 +31,9 @@ const SamplePrevArrow = ({ onClick }: ArrowPropsType) => {
 };
 
 const SlideOffert = () => {
-  const { data, isError, isLoading, isSuccess } = useGetCarsQuery();
+  const { data, isError, isLoading, isSuccess } = useGetCarsQuery({
+    brand: 'All',
+  });
   return (
     <div className={styles.slideOffert}>
       {isLoading && <LoadingSpinner />}
