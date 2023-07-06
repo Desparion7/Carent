@@ -22,10 +22,18 @@ const MobileNav = ({ setIsMobileMenu }: PropsMobileNav) => {
       <div className={`${styles.mobileMenu__main}  ${menuAnimation}`}>
         <nav className={styles.mobileMenu__main__links}>
           <MdClose onClick={handlerHideMenu} />
-          <Link to="/">Home</Link>
-          <Link to="/cars">Cars</Link>
-          <Link to="/services">Services</Link>
-          <Link to="/contact">Contact Us</Link>
+          <Link to="/" onClick={handlerHideMenu}>
+            Home
+          </Link>
+          <Link to="/cars" onClick={handlerHideMenu}>
+            Cars
+          </Link>
+          <Link to="/aboutus" onClick={handlerHideMenu}>
+            About us
+          </Link>
+          <Link to="/contact" onClick={handlerHideMenu}>
+            Contact Us
+          </Link>
         </nav>
       </div>
       <div

@@ -4,6 +4,8 @@ import Layout from './pages/Layout';
 import CarsPage from './pages/CarsPage';
 import CarPage from './pages/CarPage';
 import LoadingSpinner from './components/ui/LoadingSpinner';
+import AboutUsPage from './pages/AboutUsPage';
+import ContactUsPage from './pages/ContactUsPage';
 
 const LazyHomePage = lazy(() => import('./pages/HomePage'));
 
@@ -27,6 +29,14 @@ const router = createBrowserRouter([
       {
         path: '/cars',
         element: <CarsPage />,
+      },
+      {
+        path: '/aboutus',
+        element: <AboutUsPage />,
+      },
+      {
+        path: '/contact',
+        element: <ContactUsPage />,
       },
       {
         path: '/:name',
