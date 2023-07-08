@@ -9,7 +9,7 @@ const Footer = () => {
       <div className={styles.footer__top}>
         <div className={styles.footer__top__logo}>
           <div className={styles.footer__top__logo__img}>
-            <img src="./logo.PNG" alt="CompanyLogo" />
+            <img src="/logo.PNG" alt="CompanyLogo" />
             <div>CARENT</div>
           </div>
           <p>

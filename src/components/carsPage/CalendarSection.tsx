@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import { BiCalendar } from 'react-icons/bi';
-import dateFormat from 'dateformat';
+import { format } from 'date-fns';
+import { useDispatch } from 'react-redux';
+import { changePickupDate, changeReturnDate } from '../../app/slices/dateSlice';
 import styles from './CalendarSection.module.scss';
 import 'react-calendar/dist/Calendar.css';
 
 type ValuePiece = Date | null;
 
 const CalendarSection = () => {
+  const dispatch = useDispatch();
   const [startDate, setStartDate] = useState<
     ValuePiece | [ValuePiece, ValuePiece]
   >(new Date());
@@ -23,17 +26,19 @@ const CalendarSection = () => {
 
   useEffect(() => {
     if (startDate instanceof Date) {
-      const formattedDate = dateFormat(startDate, 'fullDate');
+      const formattedDate = format(startDate, 'PP');
       setStartDateString(formattedDate);
+      dispatch(changeReturnDate(formattedDate));
     }
-  }, [startDate]);
+  }, [startDate, dispatch]);
 
   useEffect(() => {
     if (returnDate instanceof Date) {
-      const formattedDate = dateFormat(returnDate, 'fullDate');
+      const formattedDate = format(returnDate, 'PP');
       setReturntDateString(formattedDate);
+      dispatch(changePickupDate(formattedDate));
     }
-  }, [returnDate]);
+  }, [returnDate, dispatch]);
 
   const toggleStartDateCalendar = () => {
     setStartCalendarOpen(!isstartCalendarOpen);

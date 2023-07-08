@@ -27,7 +27,7 @@ const Header = () => {
         tabIndex={0}
         aria-label="home"
       >
-        <img src="./logo.PNG" alt="CompanyLogo" />
+        <img src="/logo.PNG" alt="CompanyLogo" />
         <p>CARENT</p>
       </div>
       {isDesktop && (
