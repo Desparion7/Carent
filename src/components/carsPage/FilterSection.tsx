@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { pickupDate, returnDate } from '../../app/slices/dateSlice';
 import styles from './FilterSection.module.scss';
 import CalendarSection from './CalendarSection';
 import CarCard from '../homepage/CarCard';
-import { useGetCarsQuery } from '../../app/slices/carsApiSlice';
+import { useGetFilteredCarsQuery } from '../../app/slices/carsApiSlice';
 import LoadingSpinner from '../ui/LoadingSpinner';
 
 interface BrandLinkType {
@@ -36,10 +38,27 @@ const BrandLink = ({ carBrand, brand, handlerBrand }: BrandLinkType) => {
 
 const FilterSection = () => {
   const isDesktop = useMediaQuery({ minWidth: '900px' });
+
   const [brand, setBrand] = useState('All');
-  const { data, isError, isLoading, isSuccess } = useGetCarsQuery({ brand });
+  const startDate = useSelector(pickupDate);
+  const endDate = useSelector(returnDate);
+
+  const [selectedStartDate, setSelectedStartDate] = useState('');
+  const [selectedReturnDate, setSelectedReturnDate] = useState('');
+  const [selectedBrand, setSelectedBrand] = useState('All');
+
+  const { data, isError, isLoading, isSuccess } = useGetFilteredCarsQuery({
+    brand: selectedBrand,
+    startDate: selectedStartDate,
+    endDate: selectedReturnDate,
+  });
   const handlerBrand = (newBrand: string) => {
     setBrand(newBrand);
+  };
+  const handleFilter = () => {
+    setSelectedStartDate(startDate);
+    setSelectedReturnDate(endDate);
+    setSelectedBrand(brand);
   };
   return (
     <div className={`${styles.filterSection} ${styles.wrapper}`}>
@@ -107,7 +126,11 @@ const FilterSection = () => {
         )}
 
         {isDesktop && (
-          <button className={styles.button} type="button">
+          <button
+            className={styles.button}
+            type="button"
+            onClick={handleFilter}
+          >
             Filter
           </button>
         )}
@@ -116,7 +139,11 @@ const FilterSection = () => {
         <div className={styles.filterSection__filter}>
           <CalendarSection />
           {!isDesktop && (
-            <button className={styles.button} type="button">
+            <button
+              className={styles.button}
+              type="button"
+              onClick={handleFilter}
+            >
               Filter
             </button>
           )}

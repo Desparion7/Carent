@@ -7,8 +7,8 @@ export interface DateState {
 }
 
 const initialState: DateState = {
-  pickupDate: new Date().toISOString(),
-  returnDate: new Date().toISOString(),
+  pickupDate: '',
+  returnDate: '',
 };
 
 const dateSlice = createSlice({

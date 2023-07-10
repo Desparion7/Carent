@@ -3,9 +3,12 @@ import { Car } from '../../interface/car.interface';
 
 const carsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getCars: builder.query<Car[], { brand: string }>({
-      query: ({ brand }) => ({
-        url: `/cars?brand=${brand}`,
+    getFilteredCars: builder.query<
+      Car[],
+      { brand: string; startDate?: string; endDate?: string }
+    >({
+      query: ({ brand, startDate, endDate }) => ({
+        url: `/cars?brand=${brand}&startDate=${startDate}&endDate=${endDate}`,
         method: 'GET',
       }),
       providesTags: [{ type: 'Cars', id: 'LIST' }],
@@ -20,4 +23,4 @@ const carsApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useGetCarsQuery, useGetCarQuery } = carsApiSlice;
+export const { useGetFilteredCarsQuery, useGetCarQuery } = carsApiSlice;

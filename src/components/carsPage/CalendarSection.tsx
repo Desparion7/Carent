@@ -13,10 +13,10 @@ const CalendarSection = () => {
   const dispatch = useDispatch();
   const [startDate, setStartDate] = useState<
     ValuePiece | [ValuePiece, ValuePiece]
-  >(new Date());
+  >(null);
   const [returnDate, setReturnDate] = useState<
     ValuePiece | [ValuePiece, ValuePiece]
-  >(new Date());
+  >(null);
 
   const [isstartCalendarOpen, setStartCalendarOpen] = useState(false);
   const [isReturnCalendarOpen, setReturnCalendarOpen] = useState(false);
@@ -28,7 +28,7 @@ const CalendarSection = () => {
     if (startDate instanceof Date) {
       const formattedDate = format(startDate, 'PP');
       setStartDateString(formattedDate);
-      dispatch(changeReturnDate(formattedDate));
+      dispatch(changePickupDate(formattedDate));
     }
   }, [startDate, dispatch]);
 
@@ -36,7 +36,7 @@ const CalendarSection = () => {
     if (returnDate instanceof Date) {
       const formattedDate = format(returnDate, 'PP');
       setReturntDateString(formattedDate);
-      dispatch(changePickupDate(formattedDate));
+      dispatch(changeReturnDate(formattedDate));
     }
   }, [returnDate, dispatch]);
 

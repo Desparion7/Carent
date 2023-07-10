@@ -5,7 +5,7 @@ import styles from './SlideOffert.module.scss';
 import CarCard from './CarCard';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { useGetCarsQuery } from '../../app/slices/carsApiSlice';
+import { useGetFilteredCarsQuery } from '../../app/slices/carsApiSlice';
 import LoadingSpinner from '../ui/LoadingSpinner';
 
 interface ArrowPropsType {
@@ -31,7 +31,7 @@ const SamplePrevArrow = ({ onClick }: ArrowPropsType) => {
 };
 
 const SlideOffert = () => {
-  const { data, isError, isLoading, isSuccess } = useGetCarsQuery({
+  const { data, isError, isLoading, isSuccess } = useGetFilteredCarsQuery({
     brand: 'All',
   });
   return (
