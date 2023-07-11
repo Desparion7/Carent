@@ -165,7 +165,11 @@ const CalendarPicker = ({
           ) : (
             <p>Total Price: {totalPrice}$</p>
           )}
-          <button className="button" type="button">
+          <button
+            className="button"
+            type="button"
+            disabled={dateIsSelectedError}
+          >
             Book Car
           </button>
         </div>
