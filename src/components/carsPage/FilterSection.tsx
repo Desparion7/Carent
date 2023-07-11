@@ -170,6 +170,9 @@ const FilterSection = () => {
             ))}
           </div>
         )}
+        {data?.length === 0 && (
+          <div className={styles.errorText}>No matching car found!</div>
+        )}
       </div>
     </div>
   );

@@ -30,6 +30,7 @@ const CalendarPicker = ({
     const newDate = new Date(date);
     convertedDate.push(newDate);
   });
+
   const selectedDates: Date[] = convertedDate;
   const [value, onChange] = useState<Date[]>([new Date(), new Date()]);
   const [dateIsSelectedError, setDateIsSelectedError] = useState(false);
