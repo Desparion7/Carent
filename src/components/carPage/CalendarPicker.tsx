@@ -145,11 +145,11 @@ const CalendarPicker = ({ carId, priceList, calendar }: CalendarProps) => {
             </p>
           )}
           <p>If you want book one day click on it twice.</p>
-        </div>
-        <div>
           <h3>General terms</h3>
           <p>The amount of the deposit {priceList?.['1-2 days']}$.</p>
           <p>Max mileage per day 200 mileage.</p>
+        </div>
+        <div>
           <BookingForm
             carId={carId}
             dateIsSelectedError={dateIsSelectedError}

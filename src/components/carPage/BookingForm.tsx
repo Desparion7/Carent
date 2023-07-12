@@ -2,6 +2,7 @@ import { Formik, Form, Field, FormikHelpers } from 'formik';
 import { UserBookingInfo } from '../../interface/message-interface';
 import styles from './BookingForm.module.scss';
 import { useBookCarMutation } from '../../app/slices/carsApiSlice';
+import LoadingButton from '../ui/LoadingButton';
 
 interface BookingPropsType {
   carId: string;
@@ -103,9 +104,9 @@ const BookingForm = ({
                 placeholder={errors.phone && touched.phone ? errors.phone : ''}
               />
             </div>
-            {isSuccess && <p>Car booked.</p>}
+            {isSuccess && <p className={styles.successText}>Car booked.</p>}
             {isError && (
-              <p>
+              <p className={styles.errorText}>
                 Something goes wrong! Please try again or book car through
                 phone.
               </p>
@@ -115,7 +116,7 @@ const BookingForm = ({
               type="submit"
               disabled={dateIsSelectedError || Object.keys(errors).length > 0}
             >
-              Book Car
+              {isLoading ? <LoadingButton /> : 'Book Car'}
             </button>
           </Form>
         )}
