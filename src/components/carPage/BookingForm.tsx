@@ -1,4 +1,5 @@
 import { Formik, Form, Field, FormikHelpers } from 'formik';
+import format from 'date-fns/format';
 import { UserBookingInfo } from '../../interface/message-interface';
 import styles from './BookingForm.module.scss';
 import { useBookCarMutation } from '../../app/slices/carsApiSlice';
@@ -45,10 +46,13 @@ const BookingForm = ({
       setNoDateError(true);
       return;
     }
+
+    const formattedStartDate = format(pickupDate, 'PP');
+    const formattedReturnDate = format(returnDate, 'PP');
     await bookCar({
       carId,
-      pickupDate,
-      returnDate,
+      pickupDate: formattedStartDate,
+      returnDate: formattedReturnDate,
       name: values.name,
       surname: values.surname,
       phone: values.phone,
