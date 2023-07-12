@@ -22,7 +22,7 @@ const carsApiSlice = apiSlice.injectEndpoints({
     }),
     bookCar: builder.mutation<Car, BookingCarInfo>({
       query: ({ carId, pickupDate, returnDate, name, surname, phone }) => ({
-        url: `/cars/booking`,
+        url: `/reservations`,
         method: 'POST',
         body: {
           carId,

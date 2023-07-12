@@ -153,8 +153,8 @@ const CalendarPicker = ({ carId, priceList, calendar }: CalendarProps) => {
           <BookingForm
             carId={carId}
             dateIsSelectedError={dateIsSelectedError}
-            pickupDate={pickupDate}
-            returnDate={returnDate}
+            pickupDate={value[0]}
+            returnDate={value[1]}
             setNoDateError={setNoDateError}
           />
         </div>

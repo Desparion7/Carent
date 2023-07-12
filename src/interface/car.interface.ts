@@ -29,8 +29,8 @@ export interface Car {
 
 export interface BookingCarInfo {
   carId: string;
-  pickupDate: string;
-  returnDate: string;
+  pickupDate: Date;
+  returnDate: Date;
   name: string;
   surname: string;
   phone: string;

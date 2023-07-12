@@ -7,8 +7,8 @@ import LoadingButton from '../ui/LoadingButton';
 interface BookingPropsType {
   carId: string;
   dateIsSelectedError: boolean;
-  pickupDate: string;
-  returnDate: string;
+  pickupDate: Date;
+  returnDate: Date;
   setNoDateError: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -104,7 +104,11 @@ const BookingForm = ({
                 placeholder={errors.phone && touched.phone ? errors.phone : ''}
               />
             </div>
-            {isSuccess && <p className={styles.successText}>Car booked.</p>}
+            {isSuccess && (
+              <p className={styles.successText}>
+                Car booked. On the phone will be send sms to confirm.
+              </p>
+            )}
             {isError && (
               <p className={styles.errorText}>
                 Something goes wrong! Please try again or book car through
