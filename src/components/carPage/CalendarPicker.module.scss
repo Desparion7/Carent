@@ -36,18 +36,6 @@
         margin-top: 0.5rem;
         color: red;
       }
-      button {
-        margin-top: 1rem;
-      }
-      button:disabled {
-        color: grey;
-        background-color: azure;
-        border-color: black;
-      }
-    }
-    &--clientData {
-      display: flex;
-      flex-direction: column;
     }
   }
 }

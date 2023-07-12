@@ -14,3 +14,8 @@ export interface MessageFormValuesError {
   message: string;
   consent: string;
 }
+export interface UserBookingInfo {
+  name: string;
+  surname: string;
+  phone: string;
+}

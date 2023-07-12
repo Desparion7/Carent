@@ -3,8 +3,10 @@ import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
 import { isSameDay, format } from 'date-fns';
 import Calendar from 'react-calendar';
 import styles from './CalendarPicker.module.scss';
+import BookingForm from './BookingForm';
 
 export type CalendarProps = {
+  carId: string;
   active: boolean;
   activeCalendar: (category: string) => void;
   calendar: Date[] | undefined;
@@ -19,6 +21,7 @@ export type CalendarProps = {
 };
 
 const CalendarPicker = ({
+  carId,
   active,
   activeCalendar,
   priceList,
@@ -34,6 +37,8 @@ const CalendarPicker = ({
   const selectedDates: Date[] = convertedDate;
   const [value, onChange] = useState<Date[]>([new Date(), new Date()]);
   const [dateIsSelectedError, setDateIsSelectedError] = useState(false);
+  const [nodateError, setNoDateError] = useState(false);
+
   const [pickupDate, setPickupDate] = useState<string>('');
   const [returnDate, setReturnDate] = useState<string>('');
   const [totalPrice, setTotalPrice] = useState<number>(0);
@@ -108,11 +113,13 @@ const CalendarPicker = ({
         const dates = addDates(updatedValue);
         checkingDates(dates);
         handlePriceForDay(dates);
+        setNoDateError(false);
       }
     } else {
       onChange([date]);
     }
   };
+
   return (
     <div className={`${styles.calendary} calendar`}>
       <div
@@ -160,23 +167,29 @@ const CalendarPicker = ({
           </p>
           {dateIsSelectedError ? (
             <p className={styles['calendary__booking--dates-error']}>
-              The car is not available in the selected range
+              Car is not available.
             </p>
           ) : (
             <p>Total Price: {totalPrice}$</p>
           )}
-          <button
-            className="button"
-            type="button"
-            disabled={dateIsSelectedError}
-          >
-            Book Car
-          </button>
+          {nodateError && (
+            <p className={styles['calendary__booking--dates-error']}>
+              Please select a date.
+            </p>
+          )}
+          <p>If you want book one day click on it twice.</p>
         </div>
         <div>
           <h3>General terms</h3>
           <p>The amount of the deposit {priceList?.['1-2 days']}$.</p>
           <p>Max mileage per day 200 mileage.</p>
+          <BookingForm
+            carId={carId}
+            dateIsSelectedError={dateIsSelectedError}
+            pickupDate={pickupDate}
+            returnDate={returnDate}
+            setNoDateError={setNoDateError}
+          />
         </div>
       </div>
     </div>

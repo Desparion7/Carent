@@ -26,3 +26,12 @@ export interface Car {
   transmission: string;
   year: string;
 }
+
+export interface BookingCarInfo {
+  carId: string;
+  pickupDate: string;
+  returnDate: string;
+  name: string;
+  surname: string;
+  phone: string;
+}

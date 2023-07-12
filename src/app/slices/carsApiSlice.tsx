@@ -1,5 +1,5 @@
 import apiSlice from '../api/apiSlice';
-import { Car } from '../../interface/car.interface';
+import { Car, BookingCarInfo } from '../../interface/car.interface';
 
 const carsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -20,7 +20,23 @@ const carsApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: [{ type: 'Car', id: 'LIST' }],
     }),
+    bookCar: builder.mutation<Car, BookingCarInfo>({
+      query: ({ carId, pickupDate, returnDate, name, surname, phone }) => ({
+        url: `/cars/booking`,
+        method: 'POST',
+        body: {
+          carId,
+          pickupDate,
+          returnDate,
+          name,
+          surname,
+          phone,
+        },
+      }),
+      invalidatesTags: [{ type: 'Car', id: 'LIST' }],
+    }),
   }),
 });
 
-export const { useGetFilteredCarsQuery, useGetCarQuery } = carsApiSlice;
+export const { useGetFilteredCarsQuery, useGetCarQuery, useBookCarMutation } =
+  carsApiSlice;
