@@ -1,5 +1,4 @@
-import { useState, useRef } from 'react';
-import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
+import { useState } from 'react';
 import { isSameDay, format } from 'date-fns';
 import Calendar from 'react-calendar';
 import styles from './CalendarPicker.module.scss';
@@ -7,8 +6,6 @@ import BookingForm from './BookingForm';
 
 export type CalendarProps = {
   carId: string;
-  active: boolean;
-  activeCalendar: (category: string) => void;
   calendar: Date[] | undefined;
   priceList:
     | {
@@ -20,13 +17,7 @@ export type CalendarProps = {
     | undefined;
 };
 
-const CalendarPicker = ({
-  carId,
-  active,
-  activeCalendar,
-  priceList,
-  calendar,
-}: CalendarProps) => {
+const CalendarPicker = ({ carId, priceList, calendar }: CalendarProps) => {
   // Convert string date from backend to Date format
   const convertedDate: Date[] = [];
   calendar?.forEach((date) => {
@@ -42,7 +33,6 @@ const CalendarPicker = ({
   const [pickupDate, setPickupDate] = useState<string>('');
   const [returnDate, setReturnDate] = useState<string>('');
   const [totalPrice, setTotalPrice] = useState<number>(0);
-  const calendarRef = useRef<HTMLDivElement>(null);
   // Add class for seleted date from data base
   const tileClassName = ({ date }: { date: Date }) => {
     if (selectedDates.some((selectedDate) => isSameDay(selectedDate, date))) {
@@ -122,33 +112,10 @@ const CalendarPicker = ({
 
   return (
     <div className={`${styles.calendary} calendar`}>
-      <div
-        className={styles.calendary__title}
-        onClick={() => {
-          activeCalendar('.calendar');
-        }}
-        onKeyDown={(event) => {
-          if (event.key === 'Enter' || event.key === ' ') {
-            activeCalendar('.calendar');
-          }
-        }}
-        role="button"
-        tabIndex={0}
-      >
+      <div className={styles.calendary__title}>
         <p> Calendar</p>
-        {active ? <SlArrowUp /> : <SlArrowDown />}
       </div>
-      <div
-        ref={calendarRef}
-        className={styles.calendary__booking}
-        style={
-          active && calendarRef.current
-            ? {
-                height: `${calendarRef.current.scrollHeight}px`,
-              }
-            : { height: '0px' }
-        }
-      >
+      <div className={styles.calendary__booking}>
         <div>
           <Calendar
             tileClassName={tileClassName}

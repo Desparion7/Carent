@@ -13,7 +13,6 @@ import { useGetCarQuery } from '../app/slices/carsApiSlice';
 
 const CarPage = () => {
   const [activePriceList, setActivePriceList] = useState(false);
-  const [activeCalendar, setActiveCalendar] = useState(false);
   const [activeEquipments, setActiveEquipments] = useState(false);
   const [activeTechnical, setActiveTechnical] = useState(false);
 
@@ -49,9 +48,6 @@ const CarPage = () => {
     if (category === '.price') {
       setActivePriceList(true);
     }
-    if (category === '.calendar') {
-      setActiveCalendar(true);
-    }
     if (category === '.technical') {
       setActiveTechnical(true);
     }
@@ -62,9 +58,6 @@ const CarPage = () => {
 
   const handleOpenPriceList = () => {
     setActivePriceList(!activePriceList);
-  };
-  const handleOpenCalendar = () => {
-    setActiveCalendar(!activeCalendar);
   };
   const handleOpenTechnical = () => {
     setActiveTechnical(!activeTechnical);
@@ -107,8 +100,6 @@ const CarPage = () => {
             />
             <CalendarPicker
               carId={data?._id}
-              active={activeCalendar}
-              activeCalendar={handleOpenCalendar}
               priceList={data?.priceList}
               calendar={data?.calendar}
             />
