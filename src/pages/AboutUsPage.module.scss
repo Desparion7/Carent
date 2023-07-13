@@ -1,3 +1,9 @@
 .aboutus {
   min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  h2 {
+    text-transform: uppercase;
+  }
 }
