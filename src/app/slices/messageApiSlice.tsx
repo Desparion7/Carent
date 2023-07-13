@@ -5,7 +5,7 @@ const productsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     sendMessage: builder.mutation<void, MessageFormValues>({
       query: (userMessage) => ({
-        url: `/messages`,
+        url: `/message`,
         method: 'POST',
         body: {
           ...userMessage,

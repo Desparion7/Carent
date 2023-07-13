@@ -22,10 +22,16 @@
     min-height: 10rem;
     resize: none;
   }
+  button {
+    margin-top: 1rem;
+  }
 }
 .errorInput::placeholder {
   color: var(--error-text-color);
 }
 .errorText {
   color: var(--error-text-color);
+}
+.successSendMessage {
+  color: var(--success-text-color);
 }

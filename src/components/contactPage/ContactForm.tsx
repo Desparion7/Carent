@@ -5,7 +5,7 @@ import {
   MessageFormValuesError,
 } from '../../interface/message-interface';
 import useSendMessageMutation from '../../app/slices/messageApiSlice';
-import LoadingSpinner from '../ui/LoadingSpinner';
+import LoadingButton from '../ui/LoadingButton';
 
 const ContactForm = () => {
   const [sendMessage, { isLoading, isSuccess, isError }] =
@@ -129,11 +129,6 @@ const ContactForm = () => {
               component="div"
               className={styles.errorText}
             />
-            <div>
-              <button type="submit" className="button">
-                {isLoading ? <LoadingSpinner /> : 'Send'}
-              </button>
-            </div>
             {isSuccess && (
               <div className={styles.successSendMessage}>
                 Message send correctly. We will answer as soon as possbile.
@@ -145,6 +140,11 @@ const ContactForm = () => {
                 directly by e-mail:: <span>carent@yourcar.com</span>
               </div>
             )}
+            <div>
+              <button type="submit" className="button">
+                {isLoading ? <LoadingButton /> : 'Send'}
+              </button>
+            </div>
           </Form>
         )}
       </Formik>

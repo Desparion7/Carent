@@ -22,7 +22,7 @@ const Footer = () => {
         <div className={styles.footer__top__links}>
           <p className={styles.title}>Our Links</p>
           <Link to="/">Home</Link>
-          <Link to="/">About Us</Link>
+          <Link to="/aboutus">About Us</Link>
           <Link to="/">Services</Link>
           <Link to="/cars">Models</Link>
           <Link to="/">Blog</Link>
@@ -30,7 +30,7 @@ const Footer = () => {
         <div className={styles.footer__top__links}>
           <p className={styles.title}>Other Links</p>
           <Link to="/">FAQ</Link>
-          <Link to="/">Contact Us</Link>
+          <Link to="/contact">Contact Us</Link>
           <Link to="/">Supports</Link>
           <Link to="/">Privacy Policy</Link>
           <Link to="/">Terms & Conditions</Link>
