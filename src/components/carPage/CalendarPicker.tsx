@@ -53,8 +53,8 @@ const CalendarPicker = ({ carId, priceList, calendar }: CalendarProps) => {
   };
   // Checking if selected dates are not booked
   const checkingDates = (dates: Date[]) => {
-    const transformDates = selectedDates.map((date) => date.getTime());
-    const newUserDates = dates.map((date) => date.getTime());
+    const transformDates = selectedDates.map((date) => date.getDate());
+    const newUserDates = dates.map((date) => date.getDate());
     const inRange = transformDates.some((element) =>
       newUserDates.includes(element)
     );
