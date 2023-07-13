@@ -5,14 +5,17 @@ const ContactUsPage = () => {
   return (
     <div className={`${styles.contact} wrapper`}>
       <h2>Contact with us</h2>
-      <div>
-        <div>
-          <h3>Company&apos;s Data</h3>
-          <p>Carent sp. z o.o.</p>
-          <p>ul. Marszałkowska</p>
-          <p>00-777 Warszawa</p>
-          <p>NIP 777 77 77 7777</p>
-          <p>REGON 383354675</p>
+      <div className={styles.contact__container}>
+        <div className={styles['contact__container--info']}>
+          <div>
+            <h3>Carent sp. z o.o.</h3>
+            <p>ul. Marszałkowska 23/23</p>
+            <p>00-721 Warszawa</p>
+          </div>
+          <div>
+            <p>NIP: 756 74 23 2365</p>
+            <p>REGON: 383354675</p>
+          </div>
         </div>
         <ContactForm />
       </div>

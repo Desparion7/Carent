@@ -28,7 +28,7 @@ const ContactForm = () => {
       errors.message = 'field require';
     }
     if (!values.consent) {
-      errors.consent = 'For send message is required to accept statute';
+      errors.consent = 'For send message is required to accept statute.';
     }
     return errors;
   };
@@ -65,7 +65,7 @@ const ContactForm = () => {
                 surname <span>*</span>
               </label>
             </div>
-            <div className={styles.contactForm_name}>
+            <div className={styles.contactForm__name}>
               <div>
                 <Field
                   type="text"
@@ -94,7 +94,7 @@ const ContactForm = () => {
               </div>
             </div>
             <label htmlFor="email">
-              Email <span>*</span>
+              Email:<span>*</span>
             </label>
             <Field
               type="email"
@@ -104,15 +104,13 @@ const ContactForm = () => {
               placeholder={errors.email && touched.email ? errors.email : ''}
             />
 
-            <label htmlFor="phone">Phone</label>
+            <label htmlFor="phone">Phone:</label>
             <Field type="tel" id="phone" name="phone" />
             <label htmlFor="message">
-              Your message<span>*</span>
+              Your message:<span>*</span>
             </label>
             <Field
               as="textarea"
-              cols={30}
-              rows={10}
               id="message"
               name="message"
               className={errors.message && touched.message && styles.errorInput}

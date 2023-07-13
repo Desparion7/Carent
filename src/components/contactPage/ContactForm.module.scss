@@ -1,0 +1,31 @@
+.contactForm {
+  &__name {
+    display: flex;
+    gap: 1rem;
+  }
+  form {
+    display: flex;
+    gap: 0.3rem;
+    flex-direction: column;
+    span {
+      color: red;
+      margin: 0 0.5rem;
+    }
+  }
+  input,
+  textarea {
+    font-size: 1rem;
+    padding: 0.3rem;
+  }
+  textarea {
+    width: 100%;
+    min-height: 10rem;
+    resize: none;
+  }
+}
+.errorInput::placeholder {
+  color: var(--error-text-color);
+}
+.errorText {
+  color: var(--error-text-color);
+}
