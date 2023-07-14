@@ -1,5 +1,5 @@
 import { FaWindowClose } from 'react-icons/fa';
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import styles from './PhotoModal.module.scss';
 
@@ -15,8 +15,6 @@ export const Backdrop = () => {
 };
 
 const Popup = ({ img, imgN, setShowModal, setPhotoNumber }: ModalPropsType) => {
-  const [isFullscreen, setIsFullscreen] = useState(false);
-
   const handleNextImg = useCallback(() => {
     const imgLength = img?.length as number;
     if (imgN === imgLength - 1) {
@@ -53,19 +51,15 @@ const Popup = ({ img, imgN, setShowModal, setPhotoNumber }: ModalPropsType) => {
     };
   }, [setShowModal, handleNextImg, handlePrevImg]);
 
-  useEffect(() => {
-    const handleOrientationChange = () => {
-      const isLandscape = window.matchMedia('(orientation: landscape)').matches;
-      setIsFullscreen(isLandscape);
-    };
+  const imageRef = useRef<HTMLImageElement>(null);
 
-    window.addEventListener('orientationchange', handleOrientationChange);
+  const openFullscreen = () => {
+    const element = imageRef.current;
 
-    return () => {
-      window.removeEventListener('orientationchange', handleOrientationChange);
-    };
-  }, []);
-
+    if (element && element.requestFullscreen) {
+      element.requestFullscreen();
+    }
+  };
   return (
     <div className={styles.popup}>
       <button
@@ -91,11 +85,14 @@ const Popup = ({ img, imgN, setShowModal, setPhotoNumber }: ModalPropsType) => {
       >
         &larr;
       </button>
-      {img && !isFullscreen && <img src={img[imgN]} alt="car" />}
-      {isFullscreen && img && (
-        <div className="fullscreen-overlay">
-          <img src={img[imgN]} alt="car" className="fullscreen-image" />
-        </div>
+      {img && (
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
+        <img
+          src={img[imgN]}
+          alt="car"
+          ref={imageRef}
+          onClick={openFullscreen}
+        />
       )}
     </div>
   );
