@@ -12,3 +12,5 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     </Provider>
   </React.StrictMode>
 );
+
+// dodać wyświetlanie zdjeć całościowo i poprawić ich wyglad na slajdach

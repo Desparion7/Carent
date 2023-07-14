@@ -18,8 +18,8 @@ const CalendarSection = () => {
     ValuePiece | [ValuePiece, ValuePiece]
   >(null);
 
-  const [isstartCalendarOpen, setStartCalendarOpen] = useState(false);
-  const [isReturnCalendarOpen, setReturnCalendarOpen] = useState(false);
+  const [isstartCalendarOpen, setStartCalendarOpen] = useState(true);
+  const [isReturnCalendarOpen, setReturnCalendarOpen] = useState(true);
 
   const [startDateString, setStartDateString] = useState('');
   const [returntDateString, setReturntDateString] = useState('');
