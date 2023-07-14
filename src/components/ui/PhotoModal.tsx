@@ -51,6 +51,7 @@ const Popup = ({ img, imgN, setShowModal, setPhotoNumber }: ModalPropsType) => {
     };
   }, [setShowModal, handleNextImg, handlePrevImg]);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const imageRef = useRef<any>(null);
 
   const openFullscreen = () => {
