@@ -1,11 +1,13 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+import { useState } from 'react';
 import Slider from 'react-slick';
 import { useMediaQuery } from 'react-responsive';
 import { useInView } from 'react-intersection-observer';
 import styles from './CarParameters.module.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import PhotoModal from '../ui/PhotoModal';
 
 interface Car {
   name: string | undefined;
@@ -54,6 +56,9 @@ const CarParameters = ({
   img,
   dailyPrice,
 }: Car) => {
+  const [showPhotoModal, setShowModal] = useState<boolean>(false);
+  const [photoNumber, setPhotoNumber] = useState<number>(1);
+
   const isDesktop = useMediaQuery({ minWidth: '900px' });
   const { ref: carInfoRef, inView: carInfoInView } = useInView({
     threshold: 0,
@@ -135,12 +140,26 @@ const CarParameters = ({
             },
           ]}
         >
-          {img?.slice(1).map((photo) => (
-            <div key={photo}>
+          {img?.slice(1).map((photo, index) => (
+            <div
+              key={photo}
+              onClick={() => {
+                setShowModal(true);
+                setPhotoNumber(index + 1);
+              }}
+            >
               <img src={photo} alt={name} />
             </div>
           ))}
         </Slider>
+        {showPhotoModal && (
+          <PhotoModal
+            setShowModal={setShowModal}
+            setPhotoNumber={setPhotoNumber}
+            img={img}
+            imgN={photoNumber}
+          />
+        )}
       </div>
     </div>
   );
