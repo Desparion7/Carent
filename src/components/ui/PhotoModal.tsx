@@ -1,5 +1,5 @@
 import { FaWindowClose } from 'react-icons/fa';
-import { useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import styles from './PhotoModal.module.scss';
 
@@ -15,6 +15,8 @@ export const Backdrop = () => {
 };
 
 const Popup = ({ img, imgN, setShowModal, setPhotoNumber }: ModalPropsType) => {
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
   const handleNextImg = useCallback(() => {
     const imgLength = img?.length as number;
     if (imgN === imgLength - 1) {
@@ -51,6 +53,19 @@ const Popup = ({ img, imgN, setShowModal, setPhotoNumber }: ModalPropsType) => {
     };
   }, [setShowModal, handleNextImg, handlePrevImg]);
 
+  useEffect(() => {
+    const handleOrientationChange = () => {
+      const isLandscape = window.matchMedia('(orientation: landscape)').matches;
+      setIsFullscreen(isLandscape);
+    };
+
+    window.addEventListener('orientationchange', handleOrientationChange);
+
+    return () => {
+      window.removeEventListener('orientationchange', handleOrientationChange);
+    };
+  }, []);
+
   return (
     <div className={styles.popup}>
       <button
@@ -76,7 +91,12 @@ const Popup = ({ img, imgN, setShowModal, setPhotoNumber }: ModalPropsType) => {
       >
         &larr;
       </button>
-      {img && <img src={img[imgN]} alt="car" />}
+      {img && !isFullscreen && <img src={img[imgN]} alt="car" />}
+      {isFullscreen && img && (
+        <div className="fullscreen-overlay">
+          <img src={img[imgN]} alt="car" className="fullscreen-image" />
+        </div>
+      )}
     </div>
   );
 };
