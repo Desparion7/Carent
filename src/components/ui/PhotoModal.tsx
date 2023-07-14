@@ -51,13 +51,19 @@ const Popup = ({ img, imgN, setShowModal, setPhotoNumber }: ModalPropsType) => {
     };
   }, [setShowModal, handleNextImg, handlePrevImg]);
 
-  const imageRef = useRef<HTMLImageElement>(null);
+  const imageRef = useRef<any>(null);
 
   const openFullscreen = () => {
     const element = imageRef.current;
 
     if (element && element.requestFullscreen) {
       element.requestFullscreen();
+    } else if (element && element.mozRequestFullScreen) {
+      element.mozRequestFullScreen();
+    } else if (element && element.webkitRequestFullscreen) {
+      element.webkitRequestFullscreen();
+    } else if (element && element.msRequestFullscreen) {
+      element.msRequestFullscreen();
     }
   };
   return (
