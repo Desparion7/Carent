@@ -65,6 +65,15 @@ const CarParameters = ({
     triggerOnce: true,
   });
 
+  const handleOpenModal = (index: number) => {
+    setShowModal(true);
+    setPhotoNumber(index + 1);
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('popstate', () => {
+      document.body.style.overflow = 'auto';
+    });
+  };
+
   return (
     <div className={styles.carParameters}>
       <div
@@ -144,8 +153,7 @@ const CarParameters = ({
             <div
               key={photo}
               onClick={() => {
-                setShowModal(true);
-                setPhotoNumber(index + 1);
+                handleOpenModal(index);
               }}
             >
               <img src={photo} alt={name} />

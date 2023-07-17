@@ -33,14 +33,25 @@ const Popup = ({ img, imgN, setShowModal, setPhotoNumber }: ModalPropsType) => {
     }
   }, [img, imgN, setPhotoNumber]);
 
+  const handleCloseImg = useCallback(() => {
+    setShowModal(false);
+    document.body.style.overflow = 'auto';
+  }, [setShowModal]);
+
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setShowModal(false);
-      } else if (event.key === 'ArrowRight') {
-        handleNextImg();
-      } else if (event.key === 'ArrowLeft') {
-        handlePrevImg();
+      switch (event.key) {
+        case 'Escape':
+          handleCloseImg();
+          break;
+        case 'ArrowRight':
+          handleNextImg();
+          break;
+        case 'ArrowLeft':
+          handlePrevImg();
+          break;
+        default:
+          break;
       }
     };
 
@@ -49,22 +60,15 @@ const Popup = ({ img, imgN, setShowModal, setPhotoNumber }: ModalPropsType) => {
     return () => {
       document.removeEventListener('keydown', handleKeyPress);
     };
-  }, [setShowModal, handleNextImg, handlePrevImg]);
+  }, [handleNextImg, handlePrevImg, handleCloseImg]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const imageRef = useRef<any>(null);
 
   const openFullscreen = () => {
     const element = imageRef.current;
-
     if (element && element.requestFullscreen) {
       element.requestFullscreen();
-    } else if (element && element.mozRequestFullScreen) {
-      element.mozRequestFullScreen();
-    } else if (element && element.webkitRequestFullscreen) {
-      element.webkitRequestFullscreen();
-    } else if (element && element.msRequestFullscreen) {
-      element.msRequestFullscreen();
     }
   };
   return (
@@ -73,7 +77,7 @@ const Popup = ({ img, imgN, setShowModal, setPhotoNumber }: ModalPropsType) => {
         type="button"
         className={styles.popup__close}
         onClick={() => {
-          setShowModal(false);
+          handleCloseImg();
         }}
       >
         <FaWindowClose />

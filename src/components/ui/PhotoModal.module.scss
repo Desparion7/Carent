@@ -25,6 +25,8 @@
   align-items: center;
   z-index: 12;
   overflow: hidden;
+  opacity: 0;
+  animation: showmodal 2s forwards;
   button {
     position: absolute;
     font-size: 35px;
@@ -77,5 +79,14 @@
       top: 50%;
       left: 50px;
     }
+  }
+}
+
+@keyframes showmodal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
