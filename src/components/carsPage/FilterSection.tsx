@@ -7,34 +7,7 @@ import CalendarSection from './CalendarSection';
 import CarCard from '../homepage/CarCard';
 import { useGetFilteredCarsQuery } from '../../app/slices/carsApiSlice';
 import LoadingSpinner from '../ui/LoadingSpinner';
-
-interface BrandLinkType {
-  carBrand: string;
-  brand: string;
-  handlerBrand: (newBrand: string) => void;
-}
-
-const BrandLink = ({ carBrand, brand, handlerBrand }: BrandLinkType) => {
-  return (
-    <div
-      className={`${styles.filterSection__brands__brand} ${
-        brand === carBrand && styles.active
-      } `}
-      onClick={() => {
-        handlerBrand(carBrand);
-      }}
-      onKeyDown={(event) => {
-        if (event.key === 'Enter') {
-          handlerBrand(carBrand);
-        }
-      }}
-      tabIndex={0}
-      role="link"
-    >
-      {carBrand}
-    </div>
-  );
-};
+import BrandLink from './BrandLink';
 
 const FilterSection = () => {
   const isDesktop = useMediaQuery({ minWidth: '900px' });
