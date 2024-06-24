@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 let apiUrl;
 
 if (import.meta.env.MODE === 'development') {
-  apiUrl = 'http://localhost:3000';
+  apiUrl = 'https://carent-backend.onrender.com';
 } else {
   apiUrl = 'https://carent-backend.onrender.com';
 }
