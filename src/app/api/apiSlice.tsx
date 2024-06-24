@@ -5,7 +5,7 @@ let apiUrl;
 if (import.meta.env.MODE === 'development') {
   apiUrl = 'http://localhost:3000';
 } else {
-  apiUrl = 'https://tame-tank-top-ox.cyclic.app';
+  apiUrl = 'https://carent-backend.onrender.com';
 }
 
 const baseQuery = fetchBaseQuery({
